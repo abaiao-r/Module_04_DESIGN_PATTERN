@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:20:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 16:34:17 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 19:59:05 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,4 @@ HeadmasterOffice &HeadmasterOffice::operator=(const HeadmasterOffice &src)
 
 HeadmasterOffice::~HeadmasterOffice()
 {
-}
-
-void HeadmasterOffice::signForm(std::shared_ptr<Form> form)
-{
-    form->signForm();
-    std::cout << "HeadmasterOffice signs form" << std::endl;
-}
-
-void HeadmasterOffice::executeForm(std::shared_ptr<Form> form)
-{
-    if (form->isSigned())
-    {
-        form->execute();
-    }
-    else
-    {
-        std::cout << "Form not signed yet. Cannot execute." << std::endl;
-    }
 }

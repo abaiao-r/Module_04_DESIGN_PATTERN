@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:20:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:47:53 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 19:58:51 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,4 @@ class HeadmasterOffice : public Room
         HeadmasterOffice &operator=(const HeadmasterOffice &src);
         virtual ~HeadmasterOffice();
 
-        //Methods
-        void signForm(std::shared_ptr<Form> form);
-        void executeForm(std::shared_ptr<Form> form);
 };

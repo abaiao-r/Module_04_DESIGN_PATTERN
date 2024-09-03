@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:30:09 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 18:56:08 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 19:46:04 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ Staff::~Staff()
 void Staff::sign(const std::shared_ptr<Form> &form)
 {
     // Implement the sign method here
-    (void)form;
+    form->signForm();
 }
 
