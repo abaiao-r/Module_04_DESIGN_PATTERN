@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:20:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:48:45 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 16:34:17 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,12 @@ void HeadmasterOffice::signForm(std::shared_ptr<Form> form)
 
 void HeadmasterOffice::executeForm(std::shared_ptr<Form> form)
 {
-    form->execute();
+    if (form->isSigned())
+    {
+        form->execute();
+    }
+    else
+    {
+        std::cout << "Form not signed yet. Cannot execute." << std::endl;
+    }
 }

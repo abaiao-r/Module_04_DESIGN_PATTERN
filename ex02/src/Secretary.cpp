@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:54:02 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:46:35 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 16:50:05 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ std::shared_ptr<Form> Secretary::createForm(FormType formType)
             return (std::make_shared<SubscriptionToCourseForm>());
         default:
             return (nullptr);
+    }
 }

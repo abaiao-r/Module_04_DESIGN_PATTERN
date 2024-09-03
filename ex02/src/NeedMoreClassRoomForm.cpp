@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:47:54 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 17:48:10 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 17:33:02 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,12 @@ NeedMoreClassRoomForm::~NeedMoreClassRoomForm()
 void NeedMoreClassRoomForm::execute()
 {
     // Implement the execute method here
+    if (this->isSigned())
+    {
+        std::cout << "Execute NeedMoreClassRoomForm" << std::endl;
+    }
+    else
+    {
+        std::cout << "Form not signed yet. Cannot execute." << std::endl;
+    }
 }
