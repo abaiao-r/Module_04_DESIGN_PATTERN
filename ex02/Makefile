@@ -6,7 +6,7 @@
 #    By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 15:48:30 by andrefranci       #+#    #+#              #
-#    Updated: 2024/09/03 15:40:35 by andrefranci      ###   ########.fr        #
+#    Updated: 2024/09/03 15:41:15 by andrefranci      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRCS =  $(SRCDIR)/main.cpp \
 OBJS = 	$(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 # Targets
-NAME = Singletons
+NAME = Factory_and_Command
 
 all: 	$(NAME)
 

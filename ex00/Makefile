@@ -6,7 +6,7 @@
 #    By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 15:48:30 by andrefranci       #+#    #+#              #
-#    Updated: 2024/09/02 19:02:18 by andrefranci      ###   ########.fr        #
+#    Updated: 2024/09/03 15:40:19 by andrefranci      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS =  $(SRCDIR)/main.cpp \
 		$(SRCDIR)/Courtyard.cpp \
 		$(SRCDIR)/Form.cpp \
 		$(SRCDIR)/HeadmasterOffice.cpp \
+		$(SRCDIR)/NeedCourseCreationForm.cpp \
 		$(SRCDIR)/NeedMoreClassRoomForm.cpp \
 		$(SRCDIR)/Person.cpp \
 		$(SRCDIR)/Professor.cpp \
