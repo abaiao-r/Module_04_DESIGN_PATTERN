@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 21:14:07 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/04 12:10:03 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 #include <memory>
 
 
-int main() 
+int main(void) 
 {
     std::cout << "====================\n";
     std::cout << "Test 1: Factory Pattern\n";
@@ -123,7 +123,8 @@ int main()
         FormType::SubscriptionToCourse
     };
 
-    for (const auto& formType : formTypes) {
+    for (const auto& formType : formTypes)
+    {
         auto formInstance = secretary.createForm(formType);  // Renamed variable to avoid shadowing
         assert(formInstance != nullptr && "Factory did not create the form correctly.");
         assert(formInstance->getFormType() == formType && "Factory did not create the correct form type.");

@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:44:35 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:46:13 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 20:25:23 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ enum class FormType
     NeedCourseCreation,
     SubscriptionToCourse
 };
+
+// Declare the operator<< for FormType
+std::ostream& operator<<(std::ostream& os, const FormType& formType);
 
 class Form
 {

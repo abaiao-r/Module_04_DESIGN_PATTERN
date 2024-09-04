@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 19:47:06 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 21:05:31 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,40 @@ void Headmaster::receiveForm(std::shared_ptr<Form> p_form)
 
 void Headmaster::signForm(std::shared_ptr<Form> p_form)
 {
-    p_form->signForm();
-    std::cout << "Headmaster signs form" << std::endl;
+
+    // check if the p_form is in the vector of forms
+    for (std::vector<std::shared_ptr<Form>>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
+    {
+        if ((*it)->getFormType() == p_form->getFormType())
+        {
+            (*it)->signForm();
+            std::cout << "Headmaster signs form" << std::endl;
+            return;
+        }
+    }
+    std::cout << "Form not found in the list. Cannot sign." << std::endl;
 }
 
 void Headmaster::executeForm(std::shared_ptr<Form> p_form)
 {
-    if (p_form->isSigned())
+   //loop through the vector of forms
+    for (std::vector<std::shared_ptr<Form>>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
     {
-        // loop through the vector of forms to validate and execute the form
-        for (std::vector<std::shared_ptr<Form>>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
+        if ((*it)->getFormType() == p_form->getFormType())
         {
-            if (*it == p_form)
+            if ((*it)->isSigned())
             {
                 p_form->execute();
-                // remove the form from the vector
+                //remove the form from the vector
                 _formToValidate.erase(it);
+                return;
+            }
+            else
+            {
+                std::cout << "Form not signed yet. Cannot execute." << std::endl;
                 return;
             }
         }
     }
-    else
-    {
-        std::cout << "Form not signed yet. Cannot execute." << std::endl;
-    }
+    std::cout << "Form not found in the list. Cannot execute." << std::endl;
 }

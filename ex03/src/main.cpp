@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 19:58:28 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/03 21:14:07 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int main()
 
     // Test 2: Unsigned forms cannot be executed (Command Pattern)
     CourseFinishedForm testForm;
+    Headmaster headmaster1;
+    headmaster1.signForm(std::make_shared<CourseFinishedForm>(testForm));
     testForm.execute();  // Should do nothing since the form is unsigned
     std::cout << "Test 2 passed: Unsigned forms cannot be executed (Command Pattern).\n";
 
@@ -83,6 +85,7 @@ int main()
     Headmaster headmaster;
     std::shared_ptr<CourseFinishedForm> testFormPtr = std::make_shared<CourseFinishedForm>(testForm);  // Create shared_ptr from testForm
     std::shared_ptr<Form> formAsBase = std::static_pointer_cast<Form>(testFormPtr);  // Convert shared_ptr<CourseFinishedForm> to shared_ptr<Form>
+    headmaster.receiveForm(formAsBase);  // Pass shared_ptr to the receiveForm method
     headmaster.signForm(formAsBase);  // Pass shared_ptr to the signForm method
     headmaster.executeForm(formAsBase);  // Should print execution message
     std::cout << "Test 3 passed: Signed forms execute successfully (Command Pattern).\n";
@@ -102,6 +105,7 @@ int main()
     headmaster.executeForm(specificForm);  // Should not execute
 
     // Sign and then execute (Command Pattern)
+    headmaster.receiveForm(specificForm);
     headmaster.signForm(specificForm);
     headmaster.executeForm(specificForm);  // Should execute now
 
@@ -128,13 +132,14 @@ int main()
         headmaster.executeForm(formInstance);  // Should not execute
 
         // Sign and then execute (Command Pattern)
+        headmaster.receiveForm(formInstance);
         headmaster.signForm(formInstance);
         headmaster.executeForm(formInstance);  // Should execute now
 
         std::cout << "Test passed for form type: " << static_cast<int>(formType) << "\n";
         std::cout << "====================\n";
     }
-
+   
     std::cout << "All tests passed for all form types.\n";
 
     return (0);
