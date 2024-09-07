@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 18:48:34 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 16:59:13 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ Course::~Course()
 {
 }
 
-void Course::assignProfessor(const std::shared_ptr<Professor> professor)
+void Course::assignProfessor(Professor* professor)
 {
     this->_responsableProfessor = professor;
 }
 
-void Course::subscribeStudent(const std::shared_ptr<Student> student)
+void Course::subscribeStudent(Student* student)
 {
     if(this->_students.size() < (size_t)this->_maximumNumberOfStudent)
     {

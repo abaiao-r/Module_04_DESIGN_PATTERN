@@ -6,13 +6,12 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:56:03 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 17:58:04 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:04:03 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <memory>
 #include "Staff.hpp"
 #include "Course.hpp"
 
@@ -21,7 +20,7 @@ class Course;
 class Professor : public Staff
 {
     private:
-        std::shared_ptr<Course> _currentCourse;
+        Course* _currentCourse;
     
     public:
         explicit Professor(const std::string &staffName);
@@ -29,7 +28,7 @@ class Professor : public Staff
         Professor &operator=(const Professor &src);
         virtual ~Professor();
 
-        void assignCourse(const std::shared_ptr<Course> course);
+        void assignCourse(Course* course);
         void doClass();
         void closeCourse();
 };

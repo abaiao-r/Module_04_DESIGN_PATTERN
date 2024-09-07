@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 21:14:07 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:19:35 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,13 @@
 #include "../includes/HeadmasterOffice.hpp"
 #include "../includes/Headmaster.hpp"
 
-
 #include <iostream>
 #include <vector>
 #include <stdexcept>
 #include <cassert>
 #include <string>
-#include <memory>
 
-
-int main() 
+int main(void) 
 {
     std::cout << "====================\n";
     std::cout << "Test 1: Factory Pattern\n";
@@ -48,19 +45,19 @@ int main()
     // Test 1: Secretary creates correct form types (Factory Pattern)
     Secretary secretary("Alice");
 
-    std::shared_ptr<Form> courseForm = secretary.createForm(FormType::CourseFinished);
+    Form* courseForm = secretary.createForm(FormType::CourseFinished);
     assert(courseForm != nullptr && "Factory did not create the form correctly.");
     assert(courseForm->getFormType() == FormType::CourseFinished && "Factory did not create the correct form type.");
 
-    std::shared_ptr<Form> roomForm = secretary.createForm(FormType::NeedMoreClassRoom);
+    Form* roomForm = secretary.createForm(FormType::NeedMoreClassRoom);
     assert(roomForm != nullptr && "Factory did not create the form correctly.");
     assert(roomForm->getFormType() == FormType::NeedMoreClassRoom && "Factory did not create the correct form type.");
 
-    std::shared_ptr<Form> courseCreationForm = secretary.createForm(FormType::NeedCourseCreation);
+    Form* courseCreationForm = secretary.createForm(FormType::NeedCourseCreation);
     assert(courseCreationForm != nullptr && "Factory did not create the form correctly.");
     assert(courseCreationForm->getFormType() == FormType::NeedCourseCreation && "Factory did not create the correct form type.");
 
-    std::shared_ptr<Form> subscriptionForm = secretary.createForm(FormType::SubscriptionToCourse);
+    Form* subscriptionForm = secretary.createForm(FormType::SubscriptionToCourse);
     assert(subscriptionForm != nullptr && "Factory did not create the form correctly.");
     assert(subscriptionForm->getFormType() == FormType::SubscriptionToCourse && "Factory did not create the correct form type.");
 
@@ -73,7 +70,7 @@ int main()
     // Test 2: Unsigned forms cannot be executed (Command Pattern)
     CourseFinishedForm testForm;
     Headmaster headmaster1;
-    headmaster1.signForm(std::make_shared<CourseFinishedForm>(testForm));
+    headmaster1.signForm(&testForm);
     testForm.execute();  // Should do nothing since the form is unsigned
     std::cout << "Test 2 passed: Unsigned forms cannot be executed (Command Pattern).\n";
 
@@ -83,10 +80,10 @@ int main()
 
     // Test 3: Signed forms execute successfully (Command Pattern)
     Headmaster headmaster;
-    std::shared_ptr<CourseFinishedForm> testFormPtr = std::make_shared<CourseFinishedForm>(testForm);  // Create shared_ptr from testForm
-    std::shared_ptr<Form> formAsBase = std::static_pointer_cast<Form>(testFormPtr);  // Convert shared_ptr<CourseFinishedForm> to shared_ptr<Form>
-    headmaster.receiveForm(formAsBase);  // Pass shared_ptr to the receiveForm method
-    headmaster.signForm(formAsBase);  // Pass shared_ptr to the signForm method
+    CourseFinishedForm* testFormPtr = &testForm;  // Use raw pointer
+    Form* formAsBase = static_cast<Form*>(testFormPtr);  // Convert raw pointer
+    headmaster.receiveForm(formAsBase);  // Pass raw pointer to the receiveForm method
+    headmaster.signForm(formAsBase);  // Pass raw pointer to the signForm method
     headmaster.executeForm(formAsBase);  // Should print execution message
     std::cout << "Test 3 passed: Signed forms execute successfully (Command Pattern).\n";
 
@@ -95,8 +92,8 @@ int main()
     std::cout << "====================\n";
 
     // Test 4: End-to-end flow (Factory + Command Patterns)
-    auto form = secretary.createForm(FormType::CourseFinished);
-    auto specificForm = std::dynamic_pointer_cast<CourseFinishedForm>(form);
+    Form* form = secretary.createForm(FormType::CourseFinished);
+    CourseFinishedForm* specificForm = dynamic_cast<CourseFinishedForm*>(form);
     if (specificForm) {
         specificForm->setCourseName("History 101");
     }
@@ -123,8 +120,9 @@ int main()
         FormType::SubscriptionToCourse
     };
 
-    for (const auto& formType : formTypes) {
-        auto formInstance = secretary.createForm(formType);  // Renamed variable to avoid shadowing
+    for (const auto& formType : formTypes)
+    {
+        Form* formInstance = secretary.createForm(formType);  // Renamed variable to avoid shadowing
         assert(formInstance != nullptr && "Factory did not create the form correctly.");
         assert(formInstance->getFormType() == formType && "Factory did not create the correct form type.");
 

@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:21:12 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/08/31 17:30:52 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:16:44 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ class Staff : public Person
         virtual ~Staff();
 
         //Methods
-        void sign(const std::shared_ptr<Form> &form);
+        void sign(Form* form);
 };

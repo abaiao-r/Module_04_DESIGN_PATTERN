@@ -6,13 +6,12 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:14:53 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 20:16:44 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:02:05 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <memory>
 #include <iostream>
 #include <vector>
 
@@ -22,7 +21,7 @@
 class Headmaster : public Staff
 {
     private:
-        std::vector<std::shared_ptr<Form>> _formToValidate;
+        std::vector<Form*> _formToValidate;
 
     public:
         Headmaster();
@@ -31,7 +30,7 @@ class Headmaster : public Staff
         virtual ~Headmaster();
 
         //Methods
-        void receiveForm(std::shared_ptr<Form> p_form);
-        void signForm(std::shared_ptr<Form> p_form);
-        void executeForm(std::shared_ptr<Form> p_form);      
+        void receiveForm(Form* p_form);
+        void signForm(Form* p_form);
+        void executeForm(Form* p_form);      
 };

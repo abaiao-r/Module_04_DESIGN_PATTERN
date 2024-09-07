@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 21:05:31 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:20:32 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,15 @@ Headmaster::~Headmaster()
 {
 }
 
-void Headmaster::receiveForm(std::shared_ptr<Form> p_form)
+void Headmaster::receiveForm(Form* p_form)
 {
     _formToValidate.push_back(p_form);
 }
 
-void Headmaster::signForm(std::shared_ptr<Form> p_form)
+void Headmaster::signForm(Form* p_form)
 {
-
     // check if the p_form is in the vector of forms
-    for (std::vector<std::shared_ptr<Form>>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
+    for (std::vector<Form*>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
     {
         if ((*it)->getFormType() == p_form->getFormType())
         {
@@ -54,17 +53,17 @@ void Headmaster::signForm(std::shared_ptr<Form> p_form)
     std::cout << "Form not found in the list. Cannot sign." << std::endl;
 }
 
-void Headmaster::executeForm(std::shared_ptr<Form> p_form)
+void Headmaster::executeForm(Form* p_form)
 {
-   //loop through the vector of forms
-    for (std::vector<std::shared_ptr<Form>>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
+    // loop through the vector of forms
+    for (std::vector<Form*>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
     {
         if ((*it)->getFormType() == p_form->getFormType())
         {
             if ((*it)->isSigned())
             {
                 p_form->execute();
-                //remove the form from the vector
+                // remove the form from the vector
                 _formToValidate.erase(it);
                 return;
             }

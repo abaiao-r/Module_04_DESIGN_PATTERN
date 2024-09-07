@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:54:02 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 16:50:05 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:15:05 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ Secretary::~Secretary()
 {
 }
 
-std::shared_ptr<Form> Secretary::createForm(FormType formType)
+Form* Secretary::createForm(FormType formType)
 {
     // Implement the createForm method here
     switch (formType)
     {
         case FormType::CourseFinished:
-            return (std::make_shared<CourseFinishedForm>());
+            return new CourseFinishedForm();
         case FormType::NeedMoreClassRoom:
-            return (std::make_shared<NeedMoreClassRoomForm>());
+            return new NeedMoreClassRoomForm();
         case FormType::NeedCourseCreation:
-            return (std::make_shared<NeedCourseCreationForm>());
+            return new NeedCourseCreationForm();
         case FormType::SubscriptionToCourse:    
-            return (std::make_shared<SubscriptionToCourseForm>());
+            return new SubscriptionToCourseForm();
         default:
-            return (nullptr);
+            return nullptr;
     }
 }

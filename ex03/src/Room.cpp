@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:37:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 18:54:49 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:14:37 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long long Room::ID = 0;
 Room::Room()
 {
     this->_id = Room::ID++;
-    this->_occupants = std::vector<std::shared_ptr<Person>>();
+    this->_occupants = std::vector<Person*>();
 }
 
 Room::Room(const Room &src) : _id(Room::ID++)
@@ -39,14 +39,14 @@ Room::~Room()
 {
 }
 
-bool Room::canEnter(const std::shared_ptr<Person> person) const
+bool Room::canEnter(const Person* person) const
 {
     // Implement the canEnter method here
     (void)person;
     return (true);
 }
 
-void Room::enter(const std::shared_ptr<Person> person)
+void Room::enter(Person* person)
 {
     // check if the person can enter the room
     if (!this->canEnter(person))
@@ -57,7 +57,7 @@ void Room::enter(const std::shared_ptr<Person> person)
     this->_occupants.push_back(person);
 }
 
-void Room::exit(const std::shared_ptr<Person> person)
+void Room::exit(Person* person)
 {
     // Implement the exit method here
     for (auto it = this->_occupants.begin(); it != this->_occupants.end(); it++)
@@ -79,4 +79,3 @@ void Room::printOccupants() const
         std::cout << (*it)->name() << std::endl;
     }
 }
-

@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:58:29 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 17:58:50 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:14:02 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Professor::~Professor()
 {
 }
 
-void Professor::assignCourse(const std::shared_ptr<Course> course)
+void Professor::assignCourse(Course* course)
 {
     this->_currentCourse = course;
 }
@@ -48,5 +48,6 @@ void Professor::doClass()
 void Professor::closeCourse()
 {
     // Implement the closeCourse method here
+    this->_currentCourse = nullptr;
 }
 

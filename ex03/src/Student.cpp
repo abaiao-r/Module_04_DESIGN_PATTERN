@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 18:56:46 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:18:35 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ Student::~Student()
 {
 }
 
-void Student::attendClass(const std::shared_ptr<Classroom> classroom)
+void Student::attendClass(Classroom* classroom)
 {
     // Implement the attendClass method here
-    //classroom->enter(std::make_shared<Person>(*this));
+    // classroom->enter(this);
     (void) classroom;
 }
 
@@ -46,7 +46,7 @@ void Student::exitClass()
     // Implement the exitClass method here
 }
 
-void Student::graduate(const std::shared_ptr<Course> course)
+void Student::graduate(Course* course)
 {
     // Implement the graduate method here
     (void) course;

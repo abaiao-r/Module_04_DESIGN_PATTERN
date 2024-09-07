@@ -6,13 +6,12 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:51:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:38:53 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:07:22 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <memory>
 #include "Staff.hpp"
 #include "Form.hpp"
 #include "CourseFinishedForm.hpp"
@@ -32,5 +31,5 @@ class Secretary : public Staff
         virtual ~Secretary();
 
         //Methods
-        std::shared_ptr<Form> createForm(FormType formType);
+        Form* createForm(FormType formType);
 };

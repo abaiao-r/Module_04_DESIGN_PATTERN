@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:05:05 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/08/31 17:13:16 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:13:12 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ Person::~Person()
 {
 }
 
-const std::shared_ptr<Room> &Person::room() const
+Room* Person::room() const
 {
-    return (this->_currentRoom);
+    return this->_currentRoom;
 }
 
 const std::string &Person::name() const
 {
-    return (this->_name);
+    return this->_name;
 }
 
-void Person::setRoom(const std::shared_ptr<Room> room)
+void Person::setRoom(Room* room)
 {
     this->_currentRoom = room;
 }

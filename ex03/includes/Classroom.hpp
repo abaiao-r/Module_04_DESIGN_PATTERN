@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:42:24 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/02 17:08:36 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/07 16:58:23 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 #include "Room.hpp"
 #include "Course.hpp"
-#include <memory>
 
 class Course;
 
 class Classroom : public Room
 {
     private:
-        std::shared_ptr<Course> _currentRoom;
+        Course* _currentRoom;
 
     public:
         Classroom();
@@ -30,5 +29,5 @@ class Classroom : public Room
         virtual ~Classroom();
         
         //Methods
-        void assignCourse(std::shared_ptr<Course> p_course);
+        void assignCourse(Course* p_course);
 };
