@@ -1,11 +1,13 @@
 import os
 import re
 
-def remove_comments(code):
+def remove_comments_and_excess_blank_lines(code):
     # Remove single-line comments
     code = re.sub(r'//.*', '', code)
     # Remove multi-line comments
     code = re.sub(r'/\*.*?\*/', '', code, flags=re.DOTALL)
+    # Remove multiple consecutive blank lines
+    code = re.sub(r'\n\s*\n', '\n', code)
     return code
 
 def process_folder(folder_path, output_file, skip_file=None):
@@ -14,7 +16,7 @@ def process_folder(folder_path, output_file, skip_file=None):
             file_path = os.path.join(folder_path, filename)
             with open(file_path, 'r') as file:
                 content = file.read()
-                cleaned_content = remove_comments(content)
+                cleaned_content = remove_comments_and_excess_blank_lines(content)
                 output_file.write(cleaned_content)
                 output_file.write("\n\n")
 

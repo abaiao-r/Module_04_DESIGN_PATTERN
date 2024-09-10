@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:07:05 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:00:29 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:10:15 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ class Course
 
     public:
         explicit Course(const std::string &courseName);
-        Course(const Course &src);
-        Course &operator=(const Course &src);
         virtual ~Course();
         
         //Methods

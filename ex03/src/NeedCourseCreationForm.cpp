@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:39:49 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 17:33:29 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:13:21 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ NeedCourseCreationForm::NeedCourseCreationForm() : Form(FormType::NeedCourseCrea
 {
 }
 
-NeedCourseCreationForm::NeedCourseCreationForm(const NeedCourseCreationForm &src) : Form(src)
-{
-}
-
-NeedCourseCreationForm &NeedCourseCreationForm::operator=(const NeedCourseCreationForm &src)
-{
-    if (this != &src)
-    {
-        Form::operator=(src);
-    }
-    return (*this);
-}
 
 NeedCourseCreationForm::~NeedCourseCreationForm()
 {

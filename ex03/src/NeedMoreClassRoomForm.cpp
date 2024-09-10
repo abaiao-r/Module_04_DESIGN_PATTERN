@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:47:54 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 17:33:02 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:13:27 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ NeedMoreClassRoomForm::NeedMoreClassRoomForm() : Form(FormType::NeedMoreClassRoo
 {
 }
 
-NeedMoreClassRoomForm::NeedMoreClassRoomForm(const NeedMoreClassRoomForm &src) : Form(src)
-{
-}
-
-NeedMoreClassRoomForm &NeedMoreClassRoomForm::operator=(const NeedMoreClassRoomForm &src)
-{
-    if (this != &src)
-    {
-        Form::operator=(src);
-    }
-    return (*this);
-}
 
 NeedMoreClassRoomForm::~NeedMoreClassRoomForm()
 {

@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:05:05 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:13:12 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:13:33 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,6 @@
 
 Person::Person(const std::string &personName) : _name(personName), _currentRoom(nullptr)
 {
-}
-
-Person::Person(const Person &src) : _name(src._name), _currentRoom(src._currentRoom)
-{
-}
-
-Person &Person::operator=(const Person &src)
-{
-    if (this != &src)
-    {
-        this->_name = src._name;
-        this->_currentRoom = src._currentRoom;
-    }
-    return (*this);
 }
 
 Person::~Person()

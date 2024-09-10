@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:45:44 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:01:26 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:10:20 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ class CourseFinishedForm : public Form
         
     public:
         CourseFinishedForm();
-        CourseFinishedForm(const CourseFinishedForm &src);
-        CourseFinishedForm &operator=(const CourseFinishedForm &src);
         virtual ~CourseFinishedForm();
 
         void execute();

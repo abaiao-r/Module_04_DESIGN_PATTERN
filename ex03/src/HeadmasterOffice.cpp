@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:20:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 19:59:05 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:13:14 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 
 HeadmasterOffice::HeadmasterOffice() : Room()
 {
-}
-
-HeadmasterOffice::HeadmasterOffice(const HeadmasterOffice &src) : Room(src)
-{
-}
-
-HeadmasterOffice &HeadmasterOffice::operator=(const HeadmasterOffice &src)
-{
-    if (this != &src)
-    {
-        Room::operator=(src);
-    }
-    return (*this);
 }
 
 HeadmasterOffice::~HeadmasterOffice()

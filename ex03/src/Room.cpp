@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:37:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:14:37 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:13:44 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,6 @@ Room::Room()
 {
     this->_id = Room::ID++;
     this->_occupants = std::vector<Person*>();
-}
-
-Room::Room(const Room &src) : _id(Room::ID++)
-{
-    this->_occupants = src._occupants;
-}
-
-Room &Room::operator=(const Room &src)
-{
-    if (this != &src)
-    {
-        this->_id = Room::ID++;
-        this->_occupants = src._occupants;
-    }
-    return (*this);
 }
 
 Room::~Room()

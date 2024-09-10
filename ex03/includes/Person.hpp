@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:55:18 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:02:53 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:11:03 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ class Person
     
     public:
         explicit Person(const std::string &personName); 
-        Person(const Person &src);
-        Person &operator=(const Person &src);
         virtual ~Person();
 
         // Getters

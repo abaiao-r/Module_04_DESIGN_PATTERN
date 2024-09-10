@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:44:35 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/04 12:10:52 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/09 20:04:46 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,29 @@ enum class FormType
     SubscriptionToCourse
 };
 
+// Function to convert FormType to string
+inline std::string toString(FormType formType) {
+    switch (formType) {
+        case FormType::CourseFinished:
+            return "CourseFinished";
+        case FormType::NeedMoreClassRoom:
+            return "NeedMoreClassRoom";
+        case FormType::NeedCourseCreation:
+            return "NeedCourseCreation";
+        case FormType::SubscriptionToCourse:
+            return "SubscriptionToCourse";
+        default:
+            return "UnknownFormType";
+    }
+}
+
+// Overload the << operator for FormType
+// Overload the << operator for FormType
+inline std::ostream& operator<<(std::ostream& os, FormType formType) {
+    os << toString(formType);
+    return os;
+}
+
 class Form
 {
     private:
@@ -30,8 +53,6 @@ class Form
 
     public:
         explicit Form(FormType formType);
-        Form(const Form &src);
-        Form &operator=(const Form &src);
         virtual ~Form();
 
         //Pure virtual method

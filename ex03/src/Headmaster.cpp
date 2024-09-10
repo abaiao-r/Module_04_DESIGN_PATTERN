@@ -6,27 +6,14 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:20:32 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/09 20:00:54 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Headmaster.hpp"
 
-Headmaster::Headmaster() : Staff("Headmaster")
+Headmaster::Headmaster() : Staff("Headmaster"), _formToValidate(), _professor(nullptr), _secretary(nullptr), _students()
 {
-}
-
-Headmaster::Headmaster(const Headmaster &src) : Staff(src)
-{
-}
-
-Headmaster &Headmaster::operator=(const Headmaster &src)
-{
-    if (this != &src)
-    {
-        Staff::operator=(src);
-    }
-    return (*this);
 }
 
 Headmaster::~Headmaster()
@@ -35,6 +22,8 @@ Headmaster::~Headmaster()
 
 void Headmaster::receiveForm(Form* p_form)
 {
+    //print the form type
+    std::cout << "Headmaster received form of type: " << p_form->getFormType() << std::endl;
     _formToValidate.push_back(p_form);
 }
 
@@ -75,4 +64,43 @@ void Headmaster::executeForm(Form* p_form)
         }
     }
     std::cout << "Form not found in the list. Cannot execute." << std::endl;
+}
+
+void Headmaster::setProfessor(Professor *professor)
+{
+    _professor = professor;
+}
+
+void Headmaster::setSecretary(Secretary *secretary)
+{
+    _secretary = secretary;
+}
+
+void Headmaster::addStudent(Student *student)
+{
+    _students.push_back(student);
+}
+
+void Headmaster::notify(const std::string &sender, const std::string &event) const
+{
+    if (sender == "Professor" && event == "CourseFinished")
+    {
+        std::cout << "Headmaster: Notifying Secretary to create a graduation form.\n";
+        _secretary->createForm(FormType::CourseFinished);
+    }
+    else if (sender == "Professor" && event == "NeedsMoreClasses")
+    {
+        std::cout << "Headmaster: Notifying Secretary to create a form for more classes.\n";
+        _secretary->createForm(FormType::NeedMoreClassRoom);
+    }
+    else if (sender == "Student" && event == "RequestCourseSubscription")
+    {
+        std::cout << "Headmaster: Notifying Secretary to create a subscription form.\n";
+        _secretary->createForm(FormType::SubscriptionToCourse);
+    }
+    else if (sender == "Professor" && event == "CreateCourse")
+    {
+        std::cout << "Headmaster: Notifying Secretary to create a course creation form.\n";
+        _secretary->createForm(FormType::NeedCourseCreation);
+    }
 }

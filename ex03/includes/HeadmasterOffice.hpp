@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:20:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 19:58:51 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:10:48 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class HeadmasterOffice : public Room
         
     public:
         HeadmasterOffice();
-        HeadmasterOffice(const HeadmasterOffice &src);
-        HeadmasterOffice &operator=(const HeadmasterOffice &src);
         virtual ~HeadmasterOffice();
 
 };

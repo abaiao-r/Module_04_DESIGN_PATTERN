@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:37:36 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:38:15 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:10:53 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ class NeedCourseCreationForm : public Form
 {
     public:
         NeedCourseCreationForm();
-        NeedCourseCreationForm(const NeedCourseCreationForm &src);
-        NeedCourseCreationForm &operator=(const NeedCourseCreationForm &src);
         virtual ~NeedCourseCreationForm();
 
         void execute();

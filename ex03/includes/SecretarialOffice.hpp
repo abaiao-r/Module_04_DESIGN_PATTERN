@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:06:26 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:05:38 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:11:18 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,5 @@ class SecretarialOffice : public Room
         
     public:
         SecretarialOffice();
-        SecretarialOffice(const SecretarialOffice &src);
-        SecretarialOffice &operator=(const SecretarialOffice &src);
         virtual ~SecretarialOffice();
 };

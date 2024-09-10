@@ -6,27 +6,15 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:54:02 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:15:05 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/09 19:55:51 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Secretary.hpp"
+#include "../includes/Headmaster.hpp"
 
-Secretary::Secretary(const std::string &staffName) : Staff(staffName)
+Secretary::Secretary(const std::string &staffName) : Staff(staffName), _mediator(nullptr)
 {
-}
-
-Secretary::Secretary(const Secretary &src) : Staff(src)
-{
-}
-
-Secretary &Secretary::operator=(const Secretary &src)
-{
-    if (this != &src)
-    {
-        Staff::operator=(src);
-    }
-    return (*this);
 }
 
 Secretary::~Secretary()
@@ -35,18 +23,34 @@ Secretary::~Secretary()
 
 Form* Secretary::createForm(FormType formType)
 {
-    // Implement the createForm method here
     switch (formType)
     {
         case FormType::CourseFinished:
-            return new CourseFinishedForm();
+            return createAndReceiveForm<CourseFinishedForm>();
         case FormType::NeedMoreClassRoom:
-            return new NeedMoreClassRoomForm();
+            return createAndReceiveForm<NeedMoreClassRoomForm>();
         case FormType::NeedCourseCreation:
-            return new NeedCourseCreationForm();
-        case FormType::SubscriptionToCourse:    
-            return new SubscriptionToCourseForm();
+            return createAndReceiveForm<NeedCourseCreationForm>();
+        case FormType::SubscriptionToCourse:
+            return createAndReceiveForm<SubscriptionToCourseForm>();
         default:
             return nullptr;
     }
+}
+
+void Secretary::setMediator(Headmaster* mediator)
+{
+    // Implement the setMediator method here
+    _mediator = mediator;
+}
+
+// Moved template method definition here
+template <typename T>
+T* Secretary::createAndReceiveForm()
+{
+    if (!_mediator)
+        return nullptr;
+    T* form = new T();
+    _mediator->receiveForm(form); // Requires full type
+    return form;
 }

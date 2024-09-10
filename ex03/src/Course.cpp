@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 16:59:13 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:12:04 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 
 Course::Course(const std::string &courseName) : _courseName(courseName), _responsableProfessor(nullptr), _students(), _numberOfClassToGraduate(0), _maximumNumberOfStudent(0)
 {
-}
-
-Course::Course(const Course &src) : _courseName(src._courseName), _responsableProfessor(src._responsableProfessor), _students(src._students), _numberOfClassToGraduate(src._numberOfClassToGraduate), _maximumNumberOfStudent(src._maximumNumberOfStudent)
-{
-}
-
-Course &Course::operator=(const Course &src)
-{
-    if (this != &src)
-    {
-        this->_courseName = src._courseName;
-        this->_responsableProfessor = src._responsableProfessor;
-        this->_students = src._students;
-        this->_numberOfClassToGraduate = src._numberOfClassToGraduate;
-        this->_maximumNumberOfStudent = src._maximumNumberOfStudent;
-    }
-    return (*this);
 }
 
 Course::~Course()

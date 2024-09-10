@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:45:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/07 17:00:03 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/08 00:11:57 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ Classroom::Classroom() : Room(), _currentRoom(nullptr)
 {
 }
 
-Classroom::Classroom(const Classroom &src) : Room(src), _currentRoom(src._currentRoom)
-{
-}
-
-Classroom &Classroom::operator=(const Classroom &src)
-{
-    if (this != &src)
-    {
-        this->_currentRoom = src._currentRoom;
-    }
-    return (*this);
-}
 
 Classroom::~Classroom()
 {
