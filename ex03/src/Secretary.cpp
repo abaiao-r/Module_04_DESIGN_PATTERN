@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Secretary.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:54:02 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 19:55:51 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 16:28:53 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ Form* Secretary::createForm(FormType formType)
     }
 }
 
+Form* Secretary::createForm(FormType formType, const std::string &target)
+{
+    switch (formType)
+    {
+        case FormType::CourseFinished:
+            return createAndReceiveForm<CourseFinishedForm>(target);
+        case FormType::NeedMoreClassRoom:
+            return createAndReceiveForm<NeedMoreClassRoomForm>(target);
+        case FormType::NeedCourseCreation:
+            return createAndReceiveForm<NeedCourseCreationForm>(target);
+        case FormType::SubscriptionToCourse:
+            return createAndReceiveForm<SubscriptionToCourseForm>(target);
+        default:
+            return nullptr;
+    }
+}
+
 void Secretary::setMediator(Headmaster* mediator)
 {
     // Implement the setMediator method here
@@ -54,3 +71,14 @@ T* Secretary::createAndReceiveForm()
     _mediator->receiveForm(form); // Requires full type
     return form;
 }
+
+template <typename T>
+T* Secretary::createAndReceiveForm(const std::string &target)
+{
+    if (!_mediator)
+        return nullptr;
+    T* form = new T(target);
+    _mediator->receiveForm(form); // Requires full type
+    return form;
+}
+

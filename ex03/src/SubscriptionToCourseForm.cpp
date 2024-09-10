@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   SubscriptionToCourseForm.cpp                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:48:42 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:14:20 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 16:40:33 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/SubscriptionToCourseForm.hpp"
 
 SubscriptionToCourseForm::SubscriptionToCourseForm() : Form(FormType::SubscriptionToCourse)
+{
+}
+
+SubscriptionToCourseForm::SubscriptionToCourseForm(const std::string &target) : Form(FormType::SubscriptionToCourse, target)
 {
 }
 

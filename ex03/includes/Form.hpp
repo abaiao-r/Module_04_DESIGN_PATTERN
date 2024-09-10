@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:44:35 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 20:04:46 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 19:22:42 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ inline std::ostream& operator<<(std::ostream& os, FormType formType) {
 
 class Form
 {
-    private:
+    protected:
         FormType _formType;
         bool _isSigned;
+        std::string _target;
+        std::string _sender;
 
     public:
         explicit Form(FormType formType);
+        explicit Form(FormType formType, const std::string &target, const std::string &sender);
         virtual ~Form();
 
         //Pure virtual method
@@ -62,4 +65,6 @@ class Form
         void signForm();
         bool isSigned() const;
         FormType getFormType() const;
+        std::string getTarget() const;
+        std::string getSender() const;
 };

@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   NeedMoreClassRoomForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:47:54 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:13:27 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 19:12:26 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/NeedMoreClassRoomForm.hpp"
 
 NeedMoreClassRoomForm::NeedMoreClassRoomForm() : Form(FormType::NeedMoreClassRoom)
+{
+}
+
+NeedMoreClassRoomForm::NeedMoreClassRoomForm(const std::string &target) : Form(FormType::NeedMoreClassRoom, target)
 {
 }
 

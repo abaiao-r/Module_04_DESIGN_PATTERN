@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Course.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:12:04 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 21:09:24 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,24 @@ void Course::subscribeStudent(Student* student)
     {
         std::cout << "The course is full" << std::endl;
     }
+}
+
+void Course::setNumberOfClassToGraduate(int numberOfClassToGraduate)
+{
+    this->_numberOfClassToGraduate = numberOfClassToGraduate;
+}
+
+void Course::setMaximumNumberOfStudent(int maximumNumberOfStudent)
+{
+    this->_maximumNumberOfStudent = maximumNumberOfStudent;
+}
+
+void Course::setMediator(Headmaster* mediator)
+{
+    this->_mediator = mediator;
+}
+
+std::string Course::getCourseName() const
+{
+    return (this->_courseName);
 }

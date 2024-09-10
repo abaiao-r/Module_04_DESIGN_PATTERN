@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   CourseFinishedForm.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:47:03 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:12:13 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 19:11:48 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/CourseFinishedForm.hpp"
 
 CourseFinishedForm::CourseFinishedForm() : Form(FormType::CourseFinished)
+{
+}
+
+CourseFinishedForm::CourseFinishedForm(const std::string &target) : Form(FormType::CourseFinished, target)
 {
 }
 

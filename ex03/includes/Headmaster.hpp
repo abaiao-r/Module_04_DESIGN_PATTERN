@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Headmaster.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:14:53 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 19:40:10 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 22:39:50 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,44 @@
 #include "Professor.hpp"
 #include "Student.hpp"
 #include "Secretary.hpp"
+#include "Course.hpp"
 
+class Secretary;
+class Course;
 class Professor;
 class Student;
-class Secretary;
 
 class Headmaster : public Staff, public IMediator
 {
     private:
         std::vector<Form*> _formToValidate;
-        Professor *_professor;
+        std::vector<Professor*> _professors;
         Secretary *_secretary;
         std::vector<Student*> _students;
+        std::vector<Course*> _courses;
 
     public:
         Headmaster();
         virtual ~Headmaster();
 
-        void setProfessor(Professor *professor);
+        void addProfessor(Professor *professor);
         void setSecretary(Secretary *secretary);
         void addStudent(Student *student);
-        void notify(const std::string &sender, const std::string &event) const override;
+        void addCourse(Course *course);
+        void notify(const std::string &sender, const std::string &event) override;
+        void notify(Person &sender, const std::string &event, const std::string &target) override;
+
 
         //Methods
         void receiveForm(Form* p_form);
         void signForm(Form* p_form);
-        void executeForm(Form* p_form); 
+        void executeForm(Form* p_form);
+
+        
+
+        //Professor Methods
+        // Go teach a course
+        void goTeachCourse(const std::string &Professor);
 
           /*
         Professor Methods

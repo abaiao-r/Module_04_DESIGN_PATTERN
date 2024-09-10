@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CourseFinishedForm.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:45:44 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:10:20 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 19:11:38 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class CourseFinishedForm : public Form
         
     public:
         CourseFinishedForm();
+        CourseFinishedForm(const std::string &target);
         virtual ~CourseFinishedForm();
 
         void execute();

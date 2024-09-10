@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Student.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:47:04 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 18:50:22 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 14:10:23 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ class Student : public Person
         void exitClass();
         void graduate(Course* course);
         
-        void requestToSubscribeToCourse(Course* course);
+        void requestToSubscribeToCourse(const std::string &courseName);
         void setMediator(Headmaster* mediator);
 };

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Headmaster.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 20:00:54 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 22:22:58 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Headmaster.hpp"
 
-Headmaster::Headmaster() : Staff("Headmaster"), _formToValidate(), _professor(nullptr), _secretary(nullptr), _students()
+Headmaster::Headmaster() : Staff("Headmaster"), _formToValidate(), _professors(), _secretary(nullptr), _students(), 
 {
 }
 
@@ -20,7 +20,7 @@ Headmaster::~Headmaster()
 {
 }
 
-void Headmaster::receiveForm(Form* p_form)
+void Headmaster::receiveForm(Form* p_form) 
 {
     //print the form type
     std::cout << "Headmaster received form of type: " << p_form->getFormType() << std::endl;
@@ -66,9 +66,9 @@ void Headmaster::executeForm(Form* p_form)
     std::cout << "Form not found in the list. Cannot execute." << std::endl;
 }
 
-void Headmaster::setProfessor(Professor *professor)
+void Headmaster::addProfessor(Professor *professor)
 {
-    _professor = professor;
+    _professors.push_back(professor);
 }
 
 void Headmaster::setSecretary(Secretary *secretary)
@@ -81,7 +81,12 @@ void Headmaster::addStudent(Student *student)
     _students.push_back(student);
 }
 
-void Headmaster::notify(const std::string &sender, const std::string &event) const
+void Headmaster::addCourse(Course *course)
+{
+    _courses.push_back(course);
+}
+
+void Headmaster::notify(const std::string &sender, const std::string &event)
 {
     if (sender == "Professor" && event == "CourseFinished")
     {
@@ -104,3 +109,49 @@ void Headmaster::notify(const std::string &sender, const std::string &event) con
         _secretary->createForm(FormType::NeedCourseCreation);
     }
 }
+
+/* same as above but with an extra parameter */
+void Headmaster::notify(Person &sender, const std::string &event, const std::string &target)
+{
+    // what type of Person is the sender
+    if (Professor *professor = dynamic_cast<Professor*>(&sender))
+    {
+        if (event == "CreateCourse")
+        {
+            std::cout << "Headmaster: Notifying Secretary to create a course creation form.\n";
+            Form *type = _secretary->createForm(FormType::NeedCourseCreation, target);
+            if (type)
+            {
+                signForm(type);
+                executeForm(type);
+                Course *course = new Course(target);
+                course->setMediator(this);
+                course->assignProfessor(professor);
+                addCourse(course);
+            }
+        }
+        else if (event == "CourseFinished")
+        {
+            std::cout << "Headmaster: Notifying Secretary to create a graduation form.\n";
+            _secretary->createForm(FormType::CourseFinished, target);
+        }
+        else if (event == "NeedsMoreClasses")
+        {
+            std::cout << "Headmaster: Notifying Secretary to create a form for more classes.\n";
+            _secretary->createForm(FormType::NeedMoreClassRoom, target);
+        }
+    }
+    else if (Student *student = dynamic_cast<Student*>(&sender))
+    {
+        if (event == "RequestCourseSubscription")
+        {
+            std::cout << "Headmaster: Notifying Secretary to create a subscription form.\n";
+            _secretary->createForm(FormType::SubscriptionToCourse, target);
+        }
+    }
+}
+
+
+
+
+

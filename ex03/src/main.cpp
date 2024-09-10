@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 20:06:08 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 21:03:39 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ using RoomList = Singleton<std::string, struct RoomTag>;
 
 int main(void) 
 {
-    // create  staff list, student list, course list, room list
-/*     auto& studentList = StudentList::getInstance();
+/*     // create  staff list, student list, course list, room list
+    auto& studentList = StudentList::getInstance();
     auto& staffList = StaffList::getInstance();
     auto& courseList = CourseList::getInstance();
     auto& roomList = RoomList::getInstance(); */
@@ -58,7 +58,7 @@ int main(void)
     Student student("Student");
 
     headmaster.setSecretary(&secretary);
-    headmaster.setProfessor(&professor);
+    headmaster.addProfessor(&professor);
     headmaster.addStudent(&student);
 
     // set mediator
@@ -67,8 +67,9 @@ int main(void)
     secretary.setMediator(&headmaster);
     
     
-    // create forms through headmaster
+    // create, sign and execute forms through headmaster
     professor.requestCourseCreation("Math");
     professor.requestMoreClassRoom("Math");
     professor.requestGraduation("Student");
+    student.requestToSubscribeToCourse("Math");
 }

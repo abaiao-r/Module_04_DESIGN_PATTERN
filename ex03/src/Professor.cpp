@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Professor.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:58:29 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 19:35:16 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 22:23:45 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void Professor::closeCourse()
 
 void Professor::requestCourseCreation(const std::string &courseName)
 {
-    (void) courseName;
     // Implement the requestCourseCreation method here
     if (this->_mediator)
     {
         std::cout << "Professor requests course creation" << std::endl;
-        _mediator->notify("Professor", "CreateCourse");
+        //_mediator->notify("Professor", "CreateCourse");
+        _mediator->notify(this, "CreateCourse", courseName);
     }
 }
 
@@ -83,4 +83,6 @@ void Professor::requestMoreClassRoom(const std::string &courseName)
         _mediator->notify("Professor", "NeedsMoreClasses");
     }
 }
+
+
 

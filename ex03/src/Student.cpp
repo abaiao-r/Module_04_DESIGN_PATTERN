@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Student.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/09 19:36:20 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/10 14:30:27 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,15 @@ void Student::graduate(Course* course)
     std::cout << "Student graduated" << std::endl;
 }
 
-void Student::requestToSubscribeToCourse(Course* course)
+void Student::requestToSubscribeToCourse(const std::string &course)
 {
     (void) course;
     // Implement the requestToSubscribeToCourse method here
     if (_mediator)
     {
         std::cout << "Student requests to subscribe to course" << std::endl;
-        _mediator->notify("Student", "RequestCourseSubscription");
+        //_mediator->notify("Student", "RequestCourseSubscription");
+        _mediator->notify("Student", "RequestCourseSubscription", course);
     }
 }
 
