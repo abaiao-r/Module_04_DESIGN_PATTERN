@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Professor.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:58:29 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:17:41 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 15:41:10 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void Professor::requestGraduation(const std::string &studentName)
     if (this->_mediator)
     {
         std::cout << "Professor requests graduation" << std::endl;
-        _mediator->notify("Professor", "CourseFinished");
+        //_mediator->notify("Professor", "CourseFinished");
+        _mediator->notify(*this, "CourseFinished", studentName);
     }
 }
 
@@ -80,9 +81,15 @@ void Professor::requestMoreClassRoom(const std::string &courseName)
     if (this->_mediator)
     {
         std::cout << "Professor requests more classroom" << std::endl;
-        _mediator->notify("Professor", "NeedsMoreClasses");
+        //_mediator->notify("Professor", "NeedsMoreClasses");
+        _mediator->notify(*this, "NeedsMoreClasses", courseName);
     }
 }
 
+Course* Professor::getCurrentCourse() const
+{
+    // Implement the getCurrentCourse method here
+    return (this->_currentCourse);
+}
 
 

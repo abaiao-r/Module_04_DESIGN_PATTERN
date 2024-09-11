@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Headmaster.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:14:53 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:41:28 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:20:22 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 #include "Student.hpp"
 #include "Secretary.hpp"
 #include "Course.hpp"
+#include "Room.hpp"
 
 class Secretary;
 class Course;
 class Professor;
 class Student;
+class Room;
 
 class Headmaster : public Staff, public IMediator
 {
@@ -36,6 +38,7 @@ class Headmaster : public Staff, public IMediator
         Secretary *_secretary;
         std::vector<Student*> _students;
         std::vector<Course*> _courses;
+        std::vector<Room*> _rooms;
 
     public:
         Headmaster();
@@ -45,7 +48,8 @@ class Headmaster : public Staff, public IMediator
         void setSecretary(Secretary *secretary);
         void addStudent(Student *student);
         void addCourse(Course *course);
-        void notify(const std::string &sender, const std::string &event) override;
+        void addRoom(Room *room);
+        //void notify(const std::string &sender, const std::string &event) override;
         void notify(Person &sender, const std::string &event, const std::string &target) override;
 
         //getters
@@ -54,6 +58,7 @@ class Headmaster : public Staff, public IMediator
         Secretary* getSecretary() const;
         std::vector<Student*> getStudents() const;
         std::vector<Course*> getCourses() const;
+        std::vector<Room*> getRooms() const;
         
         //find specific course
         Course* findCourse(const std::string &courseName);

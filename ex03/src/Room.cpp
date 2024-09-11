@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Room.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:37:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:13:44 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 15:53:47 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 long long Room::ID = 0;
 
-Room::Room()
+Room::Room() : _id(0), _occupants(), _mediator(nullptr)
 {
     this->_id = Room::ID++;
-    this->_occupants = std::vector<Person*>();
 }
 
 Room::~Room()
@@ -26,9 +25,34 @@ Room::~Room()
 
 bool Room::canEnter(const Person* person) const
 {
-    // Implement the canEnter method here
-    (void)person;
-    return (true);
+    // if professor and room is not empty return false
+    if (Professor* professor = dynamic_cast<Professor*>(const_cast<Person*>(person)); professor && !this->_occupants.empty())
+    {
+        return false;
+    }
+    // if student and no teacher in room return false
+    else if (Student* student = dynamic_cast<Student*>(const_cast<Person*>(person)); student && this->_occupants.empty())
+    {
+        return false;
+    }
+    // if student and teacher from different course return false
+    else if (Student* student = dynamic_cast<Student*>(const_cast<Person*>(person)); student && !this->_occupants.empty())
+    {
+        for (auto it = this->_occupants.begin(); it != this->_occupants.end(); it++)
+        {
+            if (Professor* professor = dynamic_cast<Professor*>(*it); professor)
+            {
+                //store the course of the professor
+                Course* course = this->_mediator->findCourse(professor->name());
+                //check if the student is subscribed to the course
+                if (!student->findCourse(course->getCourseName()))
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
 }
 
 void Room::enter(Person* person)
@@ -63,4 +87,10 @@ void Room::printOccupants() const
     {
         std::cout << (*it)->name() << std::endl;
     }
+}
+
+void Room::setMediator(Headmaster* mediator)
+{
+    // Implement the setMediator method here
+    this->_mediator = mediator;
 }

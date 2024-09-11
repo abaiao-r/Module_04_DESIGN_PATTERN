@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Course.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:47:30 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:09:54 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ void Course::subscribeStudent(Student* student)
     else
     {
         std::cout << "The course is full" << std::endl;
+    }
+}
+
+void Course::unsubscribeStudent(Student* student)
+{
+    for (auto it = this->_students.begin(); it != this->_students.end(); it++)
+    {
+        if (*it == student)
+        {
+            this->_students.erase(it);
+            break;
+        }
     }
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Student.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:34:44 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:13:00 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,44 @@ void Student::setMediator(Headmaster* mediator)
 {
     // Implement the setMediator method here
     _mediator = mediator;
+}
+
+void Student::setSubscribedCourse(Course* course)
+{
+    // Implement the setSubscribedCourse method here
+    _subscribedCourse.push_back(course);
+}
+
+std::vector<Course*> Student::getSubscribedCourse() const
+{
+    // Implement the getSubscribedCourse method here
+    return (_subscribedCourse);
+}
+
+Course* Student::findCourse(const std::string &courseName) const
+{
+    // Implement the findCourse method here
+    for (auto it = _subscribedCourse.begin(); it != _subscribedCourse.end(); it++)
+    {
+        if ((*it)->getCourseName() == courseName)
+        {
+            return (*it);
+        }
+    }
+    return (nullptr);
+}
+
+void Student::removeCourse(const std::string &courseName)
+{
+    // Implement the removeCourse method here
+    for (auto it = _subscribedCourse.begin(); it != _subscribedCourse.end(); it++)
+    {
+        if ((*it)->getCourseName() == courseName)
+        {
+            _subscribedCourse.erase(it);
+            break;
+        }
+    }
 }
 
 

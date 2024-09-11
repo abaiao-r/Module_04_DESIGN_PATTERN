@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:52:41 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:21:16 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int main(void)
     student.setMediator(&headmaster);
     secretary.setMediator(&headmaster);
     
-    
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
     // create, sign and execute forms through headmaster
     professor.requestCourseCreation("Math");
     // return "Math" course
@@ -78,8 +79,15 @@ int main(void)
     //print professor name
     std::cout << "Professor name: " << professorName << std::endl;
     
-    
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
     professor.requestMoreClassRoom("Math");
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
     professor.requestGraduation("Student");
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
     student.requestToSubscribeToCourse("Math");
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
 }

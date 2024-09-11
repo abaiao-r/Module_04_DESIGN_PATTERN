@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:47:04 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 14:10:23 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:13:36 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,17 @@ class Student : public Person
         void graduate(Course* course);
         
         void requestToSubscribeToCourse(const std::string &courseName);
+
+        //setters
+        void setSubscribedCourse(Course* course);
         void setMediator(Headmaster* mediator);
+
+        //Getters
+        std::vector<Course*> getSubscribedCourse() const;
+
+        // find a specific course in the subscribed courses
+        Course* findCourse(const std::string &courseName) const;
+
+        //remove a course from the subscribed courses
+        void removeCourse(const std::string &courseName);
 };

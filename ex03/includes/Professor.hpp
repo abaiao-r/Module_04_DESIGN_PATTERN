@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:56:03 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 19:10:28 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:41:13 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ class Professor : public Staff
         void requestCourseCreation(const std::string &courseName);
         void setMediator(Headmaster* mediator);
         void requestGraduation(const std::string &studentName);
-        void requestMoreClassRoom(const std::string &courseName);  
+        void requestMoreClassRoom(const std::string &courseName);
+
+        //Getters
+        Course* getCurrentCourse() const;  
         
           
     };

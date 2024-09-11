@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Course.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:07:05 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:47:17 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:09:56 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ class Course
         void assignProfessor(Professor* professor);
         void subscribeStudent(Student* student);
         void setMediator(Headmaster* mediator);
+        void unsubscribeStudent(Student* student);
 };

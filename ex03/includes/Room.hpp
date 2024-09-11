@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Room.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:33:09 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:11:13 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 15:54:17 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 #include <iostream>
 
 #include "Person.hpp"
+#include "Headmaster.hpp"
 
 class Person;
+class Headmaster;
 
 class Room
 {
@@ -25,6 +27,7 @@ class Room
         long long _id;
         std::vector<Person*> _occupants;
         static long long ID;
+        Headmaster *_mediator;
 
     public:
         Room();
@@ -35,5 +38,12 @@ class Room
         void enter(Person* person);
         void exit(Person* person);
         void printOccupants() const;
+
+        //setters
+        void setMediator(Headmaster* mediator);
+
+        //Getters
+        long long getId() const { return _id; }
+        std::vector<Person*> getOccupants() const { return _occupants; }
 };
 

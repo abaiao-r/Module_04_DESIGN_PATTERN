@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Headmaster.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:42:18 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:33:25 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ void Headmaster::addCourse(Course *course)
     _courses.push_back(course);
 }
 
+void Headmaster::addRoom(Room *room)
+{
+    _rooms.push_back(room);
+}
+
 std::vector<Form*> Headmaster::getFormToValidate() const
 {
     return _formToValidate;
@@ -111,6 +116,11 @@ std::vector<Course*> Headmaster::getCourses() const
     return _courses;
 }
 
+std::vector<Room*> Headmaster::getRooms() const
+{
+    return _rooms;
+}
+
 Course* Headmaster::findCourse(const std::string &courseName)
 {
     for (std::vector<Course*>::iterator it = _courses.begin(); it != _courses.end(); ++it)
@@ -123,7 +133,7 @@ Course* Headmaster::findCourse(const std::string &courseName)
     return nullptr;
 }
 
-void Headmaster::notify(const std::string &sender, const std::string &event)
+/* void Headmaster::notify(const std::string &sender, const std::string &event)
 {
     if (sender == "Professor" && event == "CourseFinished")
     {
@@ -146,7 +156,7 @@ void Headmaster::notify(const std::string &sender, const std::string &event)
         _secretary->createForm(FormType::NeedCourseCreation);
     }
 }
-
+ */
 /* same as above but with an extra parameter */
 void Headmaster::notify(Person &sender, const std::string &event, const std::string &target)
 {
@@ -170,12 +180,38 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
         else if (event == "CourseFinished")
         {
             std::cout << "Headmaster: Notifying Secretary to create a graduation form.\n";
-            _secretary->createForm(FormType::CourseFinished);
+            Form *type = _secretary->createForm(FormType::CourseFinished);
+            if (type)
+            {
+                signForm(type);
+                executeForm(type);
+                // find the course that professor is responsible for
+                Course *course = professor->getCurrentCourse();
+                if (course)
+                {
+                    // unsuscribe student from course
+                    for (auto it = course->getStudents().begin(); it != course->getStudents().end(); it++)
+                    {
+                        (*it)->removeCourse(course->getCourseName());
+                        (*it)->graduate(course);
+                        course->unsubscribeStudent(*it);
+                    }
+                }
+            }
         }
         else if (event == "NeedsMoreClasses")
         {
             std::cout << "Headmaster: Notifying Secretary to create a form for more classes.\n";
-            _secretary->createForm(FormType::NeedMoreClassRoom);
+            Form *type = _secretary->createForm(FormType::NeedMoreClassRoom);
+            if (type)
+            {
+                signForm(type);
+                executeForm(type);
+                Room *room = new Room();
+                room->setMediator(this);
+                addRoom(room);
+                std::cout << "Room created id: " << room->getId() << std::endl;
+            }
         }
     }
     else if (Student *student = dynamic_cast<Student*>(&sender))
@@ -184,7 +220,19 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
         {
             (void) student;
             std::cout << "Headmaster: Notifying Secretary to create a subscription form.\n";
-            _secretary->createForm(FormType::SubscriptionToCourse);
+            Form *type = _secretary->createForm(FormType::SubscriptionToCourse);
+            if (type)
+            {
+                signForm(type);
+                executeForm(type);
+                Course *course = findCourse(target);
+                if (course)
+                {
+                    course->subscribeStudent(student);
+                    student->setSubscribedCourse(course);
+                    std::cout << "Student " << student->name() << " subscribed to course " << target << std::endl;
+                }
+            }
         }
     }
 }
