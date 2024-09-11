@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Courtyard.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:25:02 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:10:25 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 17:02:58 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

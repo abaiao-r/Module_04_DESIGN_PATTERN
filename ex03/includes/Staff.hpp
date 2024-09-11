@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Staff.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:21:12 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:11:35 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:44:45 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

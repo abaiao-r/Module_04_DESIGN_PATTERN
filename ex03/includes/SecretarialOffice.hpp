@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SecretarialOffice.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:06:26 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:11:18 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:44:47 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

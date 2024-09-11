@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:11:36 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 16:34:42 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:06:27 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #include <string>
 #include <iostream>
+
+#include "Person.hpp"
+
+class Person;
 
 class IMediator
 {

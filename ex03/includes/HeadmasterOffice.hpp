@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HeadmasterOffice.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:20:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:10:48 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 17:02:56 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

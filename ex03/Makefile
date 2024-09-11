@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+         #
+#    By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 15:48:30 by andrefranci       #+#    #+#              #
-#    Updated: 2024/09/09 18:51:45 by andrefranci      ###   ########.fr        #
+#    Updated: 2024/09/11 18:21:13 by abaiao-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,21 +21,21 @@ OBJDIR = objs
 # Source Files
 
 SRCS =  $(SRCDIR)/main.cpp \
+		$(SRCDIR)/Room.cpp \
+		$(SRCDIR)/Person.cpp \
+		$(SRCDIR)/Staff.cpp \
 		$(SRCDIR)/Classroom.cpp \
+		$(SRCDIR)/Form.cpp \
 		$(SRCDIR)/Course.cpp \
 		$(SRCDIR)/CourseFinishedForm.cpp \
 		$(SRCDIR)/Courtyard.cpp \
-		$(SRCDIR)/Form.cpp \
 		$(SRCDIR)/Headmaster.cpp \
 		$(SRCDIR)/HeadmasterOffice.cpp \
 		$(SRCDIR)/NeedCourseCreationForm.cpp \
 		$(SRCDIR)/NeedMoreClassRoomForm.cpp \
-		$(SRCDIR)/Person.cpp \
 		$(SRCDIR)/Professor.cpp \
-		$(SRCDIR)/Room.cpp \
 		$(SRCDIR)/SecretarialOffice.cpp \
 		$(SRCDIR)/Secretary.cpp \
-		$(SRCDIR)/Staff.cpp \
 		$(SRCDIR)/StaffRestRoom.cpp \
 		$(SRCDIR)/Student.cpp \
 		$(SRCDIR)/SubscriptionToCourseForm.cpp

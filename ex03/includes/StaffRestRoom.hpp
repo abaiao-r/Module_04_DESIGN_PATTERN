@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   StaffRestRoom.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:22:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:11:40 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 16:44:44 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

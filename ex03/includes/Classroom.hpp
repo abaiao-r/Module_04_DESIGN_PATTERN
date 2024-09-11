@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Classroom.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:42:24 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:10:07 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/11 18:24:29 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Room.hpp"
 #include "Course.hpp"
-
-class Course;
+#include "Room.hpp"
 
 class Classroom : public Room
 {
