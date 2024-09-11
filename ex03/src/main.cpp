@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 21:03:39 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:52:41 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,16 @@ int main(void)
     
     // create, sign and execute forms through headmaster
     professor.requestCourseCreation("Math");
+    // return "Math" course
+    Course *course = headmaster.findCourse("Math");
+    // find who is the responsible professor for the course
+    Professor *responsibleProfessor = course->getResponsableProfessor();
+    // get professor name
+    std::string professorName = responsibleProfessor->name();
+    //print professor name
+    std::cout << "Professor name: " << professorName << std::endl;
+    
+    
     professor.requestMoreClassRoom("Math");
     professor.requestGraduation("Student");
     student.requestToSubscribeToCourse("Math");

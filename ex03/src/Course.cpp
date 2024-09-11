@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Course.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 21:09:24 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:47:30 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Course::Course(const std::string &courseName) : _courseName(courseName), _responsableProfessor(nullptr), _students(), _numberOfClassToGraduate(0), _maximumNumberOfStudent(0)
 {
+    std::cout << "Course " << courseName << " created" << std::endl;
 }
 
 Course::~Course()
@@ -56,3 +57,24 @@ std::string Course::getCourseName() const
 {
     return (this->_courseName);
 }
+
+Professor* Course::getResponsableProfessor() const
+{
+    return (this->_responsableProfessor);
+}
+
+std::vector<Student*> Course::getStudents() const
+{
+    return (this->_students);
+}
+
+int Course::getNumberOfClassToGraduate() const
+{
+    return (this->_numberOfClassToGraduate);
+}
+
+int Course::getMaximumNumberOfStudent() const
+{
+    return (this->_maximumNumberOfStudent);
+}
+

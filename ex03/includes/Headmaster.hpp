@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Headmaster.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:14:53 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 22:39:50 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:41:28 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ class Headmaster : public Staff, public IMediator
         void addCourse(Course *course);
         void notify(const std::string &sender, const std::string &event) override;
         void notify(Person &sender, const std::string &event, const std::string &target) override;
+
+        //getters
+        std::vector<Form*> getFormToValidate() const;
+        std::vector<Professor*> getProfessors() const;
+        Secretary* getSecretary() const;
+        std::vector<Student*> getStudents() const;
+        std::vector<Course*> getCourses() const;
+        
+        //find specific course
+        Course* findCourse(const std::string &courseName);
 
 
         //Methods

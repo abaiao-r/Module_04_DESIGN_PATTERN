@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:46:15 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 19:23:47 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:30:23 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Form::Form(FormType formType) : _formType(formType), _isSigned(false), _target("
 {
 }
 
-Form::Form(FormType formType, const std::string &target, const std::string &sender) : _formType(formType), _isSigned(false), _target(target), _sender(sender)
+Form::Form(FormType formType, const std::string &target) : _formType(formType), _isSigned(false), _target(target), _sender("")
 {
 }
 

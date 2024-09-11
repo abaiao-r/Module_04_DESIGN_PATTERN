@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CourseFinishedForm.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:47:03 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 19:11:48 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:30:59 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

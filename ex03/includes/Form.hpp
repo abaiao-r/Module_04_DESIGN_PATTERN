@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:44:35 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 19:22:42 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:29:58 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ class Form
 
     public:
         explicit Form(FormType formType);
-        explicit Form(FormType formType, const std::string &target, const std::string &sender);
+        explicit Form(FormType formType, const std::string &target);
         virtual ~Form();
 
         //Pure virtual method

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Professor.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:58:29 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 22:23:45 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:17:41 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Professor::requestCourseCreation(const std::string &courseName)
     {
         std::cout << "Professor requests course creation" << std::endl;
         //_mediator->notify("Professor", "CreateCourse");
-        _mediator->notify(this, "CreateCourse", courseName);
+        _mediator->notify(*this, "CreateCourse", courseName);
     }
 }
 

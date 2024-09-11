@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Student.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 14:30:27 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:34:44 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void Student::requestToSubscribeToCourse(const std::string &course)
     {
         std::cout << "Student requests to subscribe to course" << std::endl;
         //_mediator->notify("Student", "RequestCourseSubscription");
-        _mediator->notify("Student", "RequestCourseSubscription", course);
+        _mediator->notify(*this, "RequestCourseSubscription", course);
     }
 }
 
