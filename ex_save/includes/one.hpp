@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:11:47 by abaiao-r          #+#    #+#             */
-/*   Updated: 2024/09/12 19:17:34 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:24:21 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #pragma once
 
 #include <iostream>
+#include <map>
 #include <vector>
 #include <stdexcept>
 #include <cassert>
@@ -140,6 +141,8 @@ private:
     std::string _courseName;
     Professor* _responsableProfessor;
     std::vector<Student*> _students;
+    //student attendance times map
+    std::map<Student *, int> _attendanceTimes;
     int _numberOfClassToGraduate;
     int _maximumNumberOfStudent;
     Headmaster *_mediator;
@@ -159,11 +162,17 @@ public:
     int getNumberOfClassToGraduate() const;
     int getMaximumNumberOfStudent() const;
 
+    //setter
+    void setAttendanceTimes(Student *student);
+
     // Methods
     void assignProfessor(Professor* professor);
     void subscribeStudent(Student* student);
     void setMediator(Headmaster* mediator);
     void unsubscribeStudent(Student* student);
+
+    // check if student attendace is enough to graduate
+    bool canGraduate(Student* student);
 
     // Find a specific student in the subscribed students
     Student* findStudent(const std::string &studentName) const;
@@ -306,7 +315,7 @@ public:
     void receiveForm(Form* p_form);
     void signForm(Form* p_form);
     void executeForm(Form* p_form);
-    void goTeachCourse(const std::string &professor);
+    void goTeachCourse(Professor* p_professor);
 };
 
 class Classroom : public Room

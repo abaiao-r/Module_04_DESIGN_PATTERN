@@ -6,13 +6,13 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 18:31:55 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:25:02 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/one.hpp"
 
-Course::Course(const std::string &courseName) : _courseName(courseName), _responsableProfessor(nullptr), _students(), _numberOfClassToGraduate(0), _maximumNumberOfStudent(0)
+Course::Course(const std::string &courseName) : _courseName(courseName), _responsableProfessor(nullptr), _students(), _numberOfClassToGraduate(2), _maximumNumberOfStudent(0), _mediator(nullptr)
 {
     std::cout << "Course " << courseName << " created" << std::endl;
 }
@@ -29,6 +29,7 @@ void Course::assignProfessor(Professor* professor)
 void Course::subscribeStudent(Student* student)
 {
     this->_students.push_back(student);
+    this->_attendanceTimes[student] = 0;
 }
 
 void Course::unsubscribeStudent(Student* student)
@@ -95,3 +96,16 @@ Student* Course::findStudent(const std::string &studentName) const
     return nullptr;
 }
 
+bool Course::canGraduate(Student *student)
+{
+    if (this->_attendanceTimes[student] >= this->_numberOfClassToGraduate)
+    {
+        return true;
+    }
+    return false;
+}
+
+void Course::setAttendanceTimes(Student *student)
+{
+    this->_attendanceTimes[student]++;
+}

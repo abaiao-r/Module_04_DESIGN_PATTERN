@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 19:17:32 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:06:52 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,11 @@ Course* Headmaster::findCourse(const std::string &courseName)
     return nullptr;
 }
 
+void Headmaster::goTeachCourse(Professor* p_professor)
+{
+    p_professor->doClass();
+}
+
 /* void Headmaster::notify(const std::string &sender, const std::string &event)
 {
     if (sender == "Professor" && event == "CourseFinished")
@@ -192,6 +197,13 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
                     Student *student = course->findStudent(target);
                     if (student)
                     {
+                        // cam he graduate?
+                        bool canGraduate = course->canGraduate(student);
+                        if (!canGraduate)
+                        {
+                            std::cout << "Student cannot graduate. Not enough classes attended." << std::endl;
+                            return;
+                        }
                         signForm(type);
                         executeForm(type);
                         student->graduate(course);
@@ -249,6 +261,8 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
         }
     }
 }
+
+
 
 
 
