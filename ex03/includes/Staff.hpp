@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:21:12 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 16:44:45 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:57:42 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Person.hpp"
 #include "Form.hpp"
 
-class Form;
+//class Form;
 
 class Staff : public Person
 {

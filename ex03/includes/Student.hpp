@@ -6,22 +6,22 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:47:04 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 16:44:44 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:19:51 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "Person.hpp"
+#include "Classroom.hpp"
 #include "Headmaster.hpp"
 #include "Course.hpp"
-#include "Classroom.hpp"
 #include <iostream>
 #include <vector>
 
-class Course;
-class Classroom;
+
 class Headmaster;
+class Course;
 
 class Student : public Person
 {

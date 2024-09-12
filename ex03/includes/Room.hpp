@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:33:09 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 17:03:39 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:32:44 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "Person.hpp"
 #include "Headmaster.hpp"
 
-class Person;
+// class Person;
 class Headmaster;
 
 class Room
@@ -43,7 +43,7 @@ class Room
         void setMediator(Headmaster* mediator);
 
         //Getters
-        long long getId() const { return _id; }
-        std::vector<Person*> getOccupants() const { return _occupants; }
+        long long getId() const;
+        std::vector<Person*> getOccupants() const;
 };
 

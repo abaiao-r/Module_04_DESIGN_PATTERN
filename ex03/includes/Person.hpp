@@ -6,13 +6,14 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:55:18 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 17:10:24 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:32:34 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <string>
+#include <iostream>
 
 #include "Room.hpp"
 

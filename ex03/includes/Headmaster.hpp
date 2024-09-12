@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:14:53 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 17:53:26 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:22:56 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 #include <iostream>
 #include <vector>
 
+#include "Room.hpp"
+
 #include "Staff.hpp"
-#include "Form.hpp"
 #include "IMediator.hpp"
+#include "Form.hpp"
 #include "Professor.hpp"
 #include "Student.hpp"
 #include "Secretary.hpp"
 #include "Course.hpp"
-#include "Room.hpp"
 
-class Secretary;
+class Form;
+class Room;
 class Course;
+class Secretary;
 class Professor;
 class Student;
-class Room;
 
 class Headmaster : public Staff, public IMediator
 {
@@ -51,7 +53,6 @@ class Headmaster : public Staff, public IMediator
         void addRoom(Room *room);
         //void notify(const std::string &sender, const std::string &event) override;
         void notify(Person &sender, const std::string &event, const std::string &target) override;
-
         //getters
         std::vector<Form*> getFormToValidate() const;
         std::vector<Professor*> getProfessors() const;

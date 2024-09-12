@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 16:13:00 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:43:27 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ void Student::exitClass()
 void Student::graduate(Course* course)
 {
     // Implement the graduate method here
-    (void) course;
-    std::cout << "Student graduated" << std::endl;
+    std::cout << "Student name: " << this->name() << " graduated from course: " << course->getCourseName() << std::endl;
 }
 
 void Student::requestToSubscribeToCourse(const std::string &course)
 {
-    (void) course;
     // Implement the requestToSubscribeToCourse method here
     if (_mediator)
     {
