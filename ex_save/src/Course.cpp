@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:14:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 20:25:02 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:37:12 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ Student* Course::findStudent(const std::string &studentName) const
 
 bool Course::canGraduate(Student *student)
 {
+    std::cout << "Attendance times: " << this->_attendanceTimes[student] << " Number of class to graduate: " << this->_numberOfClassToGraduate << std::endl;
     if (this->_attendanceTimes[student] >= this->_numberOfClassToGraduate)
     {
         return true;

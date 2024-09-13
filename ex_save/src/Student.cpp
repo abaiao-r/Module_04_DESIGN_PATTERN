@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 19:44:08 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:29:13 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,21 @@ void Student::removeCourse(const std::string &courseName)
     }
 }
 
+void Student::lookForCourseToSubscribe()
+{
+    // if student is subscribed to any course then return
+    if (!_subscribedCourse.empty())
+    {
+        return;
+    }
+    // Implement the lookForCourseToSubscribe method here
+    // loop through the courses using the mediator, if there is a course then subscribe
+    std::vector<Course*> courses = _mediator->getCourses();
+    for (auto it = courses.begin(); it != courses.end(); it++)
+    {
+        // request to subscribe to the course and then break
+        this->requestToSubscribeToCourse((*it)->getCourseName());
+        break;
+    }
+}
 

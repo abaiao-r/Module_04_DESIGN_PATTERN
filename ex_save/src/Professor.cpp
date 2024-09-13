@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:58:29 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 20:50:04 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:19:32 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,66 +27,69 @@ void Professor::assignCourse(Course* course)
 
 void Professor::doClass()
 {
-    // Implement the doClass method here
-    // if professor has a course assigned and has a classroom
-    // then professor gives class
+    // if yes, check if professor is in any room
     if (this->_currentCourse)
     {
-        // loop through all classrooms using the mediator and check if can enter
-        std::vector<Room*> rooms = this->_mediator->getRooms();
-        for (auto it = rooms.begin(); it != rooms.end(); it++)
+        Room* currentRoom = room();
+        // print current room for debug
+        std::cout << "Current room: " << currentRoom << std::endl;
+        if (!currentRoom)
         {
-            Classroom* classroom = dynamic_cast<Classroom*>(*it);
-            if (classroom && classroom->canEnter(this))
+            // look for a room to enter by checking if can enter any room
+            std::vector<Room*> rooms = this->_mediator->getRooms();
+            auto it = rooms.begin();
+            for (; it != rooms.end(); it++)
             {
-                // if professor already in classroom then skip
-                // loop through the occupants of the classroom and check if professor is already in
-                // if professor not there yet then enter
-                std::vector<Person*> occupants = classroom->getOccupants();
-                // if end of occupants then professor not in classroom
-                // enter the classroom
-                auto occupantIt = occupants.begin();
-                for (; occupantIt != occupants.end(); occupantIt++)
+                if ((*it)->canEnter(this))
                 {
-                    if (*occupantIt == this)
-                    {
-                        break;
-                    }
+                    (*it)->enter(this);
+                    break;
                 }
-                if (occupantIt == occupants.end())
-                {
-                    classroom->enter(this);
-                }
-                // function for students to enter this classroom through mediator
-                // get students from mediator
-                std::vector<Student*> students = this->_mediator->getStudents();
-                for (auto studentIt = students.begin(); studentIt != students.end(); studentIt++)
-                {
-                    // if student is subscribed to the course then enter the classroom
-                    if ((*studentIt)->findCourse(this->_currentCourse->getCourseName()))
-                    {
-                        classroom->enter(*studentIt);
-                        // update course _attendanceTimes
-                        this->_currentCourse->setAttendanceTimes(*studentIt);
-                        if (this->_currentCourse->canGraduate(*studentIt))
-                        {
-                            this->requestGraduation((*studentIt)->name());
-                        }
-                    }
-                }
-                std::cout << "Professor gave class" << std::endl;
-                // make students exit the classroom and professor exit
-                classroom->exit(this);
-                for (auto studentIt = students.begin(); studentIt != students.end(); studentIt++)
-                {
-                    classroom->exit(*studentIt);
-                }
-                return;
             }
+            if (it == rooms.end())
+            {
+                // if no room available then request more room
+                this->requestMoreClassRoom(this->_currentCourse->getCourseName());
+                // enter the room
+                this->doClass();
+            }       
         }
-        std::cout << "No classroom available" << std::endl;
-        // if no classroom available then request more classroom
-        this->requestMoreClassRoom(this->_currentCourse->getCourseName());
+        // make subscibed students enter the room through the mediator
+        Classroom* classroom = dynamic_cast<Classroom*>(this->room());
+        if (classroom)
+        {
+            this->_mediator->makeStudentsEnterRoom(classroom);
+            // print the room occupants for debug
+            classroom->printOccupants();
+            std::cout << "Professor does class in room " << classroom->getId() << std::endl;
+            //set attendanceTimes for all the room occupants that are students
+            std::vector<Person*> occupants = classroom->getOccupants();
+            for (auto it = occupants.begin(); it != occupants.end(); it++)
+            {
+                Student* student = dynamic_cast<Student*>(*it);
+                if (student)
+                {
+                    this->_currentCourse->setAttendanceTimes(student);
+                    // if student can graduate then request graduation
+                    if (this->_currentCourse->canGraduate(student))
+                    {
+                        this->requestGraduation(student->name());
+                    }
+                }
+            }
+            // make everyone by loop through the occupants and make them exit the room
+            for (auto it = occupants.begin(); it != occupants.end(); it++)
+            {
+                classroom->exit(*it);
+                (*it)->setRoom(nullptr);
+                
+            }
+            std::cout << "----------------------------Finished class-----------------------------" << std::endl;
+        }
+        else
+        {
+            std::cout << "No classroom" << std::endl;
+        }
     }
     else
     {
@@ -94,7 +97,6 @@ void Professor::doClass()
         // if no course assigned then request course creation
         this->requestCourseCreation("someCourse");
     }
-    
 }
 
 void Professor::closeCourse()

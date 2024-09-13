@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 20:06:52 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:32:39 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@ Headmaster::Headmaster() : Staff("Headmaster")
 
 Headmaster::~Headmaster()
 {
+    // delete all forms
+    for (std::vector<Form*>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
+    {
+        delete *it;
+    }
+    // delete all rooms
+    for (std::vector<Room*>::iterator it = _rooms.begin(); it != _rooms.end(); ++it)
+    {
+        delete *it;
+    }
+    // delete all courses
+    for (std::vector<Course*>::iterator it = _courses.begin(); it != _courses.end(); ++it)
+    {
+        delete *it;
+    }
 }
 
 void Headmaster::receiveForm(Form* p_form) 
@@ -52,7 +67,6 @@ void Headmaster::executeForm(Form* p_form)
             if ((*it)->isSigned())
             {
                 p_form->execute();
-                // remove the form from the vector
                 _formToValidate.erase(it);
                 return;
             }
@@ -138,6 +152,25 @@ void Headmaster::goTeachCourse(Professor* p_professor)
     p_professor->doClass();
 }
 
+void Headmaster::goAttendClass(Student* p_student, Classroom* p_classroom)
+{
+    p_classroom->enter(p_student);
+}
+
+void Headmaster::makeStudentsEnterRoom(Classroom* p_classroom)
+{
+    std::vector<Student*> students = getStudents();
+    if (students.empty())
+    {
+        std::cout << "No students to attend class." << std::endl;
+        return;
+    }
+    for (std::vector<Student*>::iterator it = students.begin(); it != students.end(); ++it)
+    {
+        goAttendClass(*it, p_classroom);
+    }
+}
+
 /* void Headmaster::notify(const std::string &sender, const std::string &event)
 {
     if (sender == "Professor" && event == "CourseFinished")
@@ -176,6 +209,8 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
             {
                 signForm(type);
                 executeForm(type);
+                // dealocate form
+                delete type;
                 Course *course = new Course(target);
                 course->setMediator(this);
                 course->assignProfessor(professor);
@@ -206,6 +241,8 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
                         }
                         signForm(type);
                         executeForm(type);
+                        // dealocate form
+                        delete type;
                         student->graduate(course);
                         student->removeCourse(course->getCourseName());
                         course->unsubscribeStudent(student);
@@ -229,6 +266,8 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
             {
                 signForm(type);
                 executeForm(type);
+                // dealocate form
+                delete type;
                 // create classroom
                 Room *room = new Classroom();
                 addRoom(room);
@@ -249,6 +288,8 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
                 {
                     signForm(type);
                     executeForm(type);
+                    // dealocate form
+                    delete type;
                     course->subscribeStudent(student);
                     student->setSubscribedCourse(course);
                     std::cout << "Student " << student->name() << " subscribed to course " << target << std::endl;

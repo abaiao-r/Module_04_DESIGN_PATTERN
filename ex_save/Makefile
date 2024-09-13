@@ -6,13 +6,13 @@
 #    By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 15:48:30 by andrefranci       #+#    #+#              #
-#    Updated: 2024/09/11 18:21:13 by abaiao-r         ###   ########.fr        #
+#    Updated: 2024/09/13 17:38:03 by abaiao-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler settings
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++11 -g #-fstandalone-debug #-fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++11 -g -fsanitize=address #-fstandalone-debug -fsanitize=address
 
 # Directories
 SRCDIR = src

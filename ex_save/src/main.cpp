@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/12 20:53:14 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:29:42 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ int main(void)
 
     std::cout << "-----------------------------------" << std::endl;
 
-
-    student.requestToSubscribeToCourse("Math");
+    // test if student can subscribe to course
+    student.lookForCourseToSubscribe();
+    //student.requestToSubscribeToCourse("Math");
 
     std::cout << "-----------------------------------" << std::endl;
 
@@ -77,13 +78,15 @@ int main(void)
 
     // make teacher give class
     professor.doClass();
-    // professor.doClass();
+    professor.doClass();
     
     std::cout << "-----------------------------------" << std::endl;
     
     professor.requestGraduation("Student");
 
     std::cout << "-----------------------------------" << std::endl;
+    
+    //delete stuff
     
 
     return 0;

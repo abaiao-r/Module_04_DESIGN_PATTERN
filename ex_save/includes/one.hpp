@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:11:47 by abaiao-r          #+#    #+#             */
-/*   Updated: 2024/09/12 20:24:21 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:26:06 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,9 @@ public:
     void exit(Person* person);
     void printOccupants() const;
 
+    // check if person is in the room
+    bool isOccupant(Person* person) const;
+
     // Setters
     void setMediator(Headmaster* mediator);
 
@@ -262,6 +265,7 @@ public:
     void exitClass();
     void graduate(Course* course);
     void requestToSubscribeToCourse(const std::string &courseName);
+    void lookForCourseToSubscribe();
 
     // Setters
     void setSubscribedCourse(Course* course);
@@ -316,6 +320,10 @@ public:
     void signForm(Form* p_form);
     void executeForm(Form* p_form);
     void goTeachCourse(Professor* p_professor);
+    void goAttendClass(Student* p_student, Classroom* p_classroom);
+    //make all students enter the room
+    void makeStudentsEnterRoom(Classroom* p_classroom);
+
 };
 
 class Classroom : public Room
