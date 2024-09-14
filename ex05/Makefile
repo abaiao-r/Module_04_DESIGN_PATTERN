@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+         #
+#    By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 15:48:30 by andrefranci       #+#    #+#              #
-#    Updated: 2024/09/13 22:10:25 by abaiao-r         ###   ########.fr        #
+#    Updated: 2024/09/14 15:41:39 by andrefranci      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ OBJDIR = objs
 # Source Files
 
 SRCS =  $(SRCDIR)/main.cpp \
+		$(SRCDIR)/School.cpp \
 		$(SRCDIR)/Room.cpp \
 		$(SRCDIR)/Person.cpp \
 		$(SRCDIR)/Staff.cpp \

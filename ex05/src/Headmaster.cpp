@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Headmaster.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/13 20:15:40 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:40:18 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,8 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
                 course->assignProfessor(professor);
                 professor->assignCourse(course);
                 addCourse(course);
+                // no do class
+                goTeachCourse(professor);
             }
         }
         else if (event == "CourseFinished")

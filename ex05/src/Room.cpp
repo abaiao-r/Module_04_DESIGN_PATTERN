@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Room.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:37:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/13 20:59:11 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/14 16:02:06 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void Room::exit(Person* person)
 
 void Room::printOccupants() const
 {
-    std::cout << "Occupants of the room " << this->_id << ":" << std::endl;
+    std::cout << "Occupants of the room " << this->_id << ", address" << this << std::endl;
     // Implement the printOccupants method here
     for (auto it = this->_occupants.begin(); it != this->_occupants.end(); it++)
     {

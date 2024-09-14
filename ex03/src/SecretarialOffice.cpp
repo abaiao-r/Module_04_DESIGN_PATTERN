@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/SecretarialOffice.hpp"
+#include "../includes/one.hpp"
 
 SecretarialOffice::SecretarialOffice() : Room()
 {

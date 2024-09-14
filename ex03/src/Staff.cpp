@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Staff.hpp"
+#include "../includes/one.hpp"
 
 Staff::Staff(const std::string &staffName) : Person(staffName)
 {

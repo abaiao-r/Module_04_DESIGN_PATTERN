@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:46:15 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:30:23 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/13 18:16:19 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Form.hpp"
+#include "../includes/one.hpp"
 
 Form::Form(FormType formType) : _formType(formType), _isSigned(false), _target(""), _sender("")
 {

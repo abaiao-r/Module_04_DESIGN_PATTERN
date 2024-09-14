@@ -11,7 +11,7 @@ You can change return type to ... Whatever you like.
 Anything, as long as you think it's smarter that what is currently writed in this file.
 */
 
-/* class Course
+class Course
 {
 private:
 	std::string _name;
@@ -23,7 +23,7 @@ public:
 	Course(std::string p_name);
 	void assign(Professor* p_professor);
 	void subscribe(Student* p_student);
-}; */
+};
 
 class Room
 {

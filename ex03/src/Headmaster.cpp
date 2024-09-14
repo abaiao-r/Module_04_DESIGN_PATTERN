@@ -6,11 +6,11 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:39:58 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 16:33:25 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:32:39 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Headmaster.hpp"
+#include "../includes/one.hpp"
 
 Headmaster::Headmaster() : Staff("Headmaster")
 {
@@ -18,6 +18,21 @@ Headmaster::Headmaster() : Staff("Headmaster")
 
 Headmaster::~Headmaster()
 {
+    // delete all forms
+    for (std::vector<Form*>::iterator it = _formToValidate.begin(); it != _formToValidate.end(); ++it)
+    {
+        delete *it;
+    }
+    // delete all rooms
+    for (std::vector<Room*>::iterator it = _rooms.begin(); it != _rooms.end(); ++it)
+    {
+        delete *it;
+    }
+    // delete all courses
+    for (std::vector<Course*>::iterator it = _courses.begin(); it != _courses.end(); ++it)
+    {
+        delete *it;
+    }
 }
 
 void Headmaster::receiveForm(Form* p_form) 
@@ -52,7 +67,6 @@ void Headmaster::executeForm(Form* p_form)
             if ((*it)->isSigned())
             {
                 p_form->execute();
-                // remove the form from the vector
                 _formToValidate.erase(it);
                 return;
             }
@@ -133,6 +147,30 @@ Course* Headmaster::findCourse(const std::string &courseName)
     return nullptr;
 }
 
+void Headmaster::goTeachCourse(Professor* p_professor)
+{
+    p_professor->doClass();
+}
+
+void Headmaster::goAttendClass(Student* p_student, Classroom* p_classroom)
+{
+    p_classroom->enter(p_student);
+}
+
+void Headmaster::makeStudentsEnterRoom(Classroom* p_classroom)
+{
+    std::vector<Student*> students = getStudents();
+    if (students.empty())
+    {
+        std::cout << "No students to attend class." << std::endl;
+        return;
+    }
+    for (std::vector<Student*>::iterator it = students.begin(); it != students.end(); ++it)
+    {
+        goAttendClass(*it, p_classroom);
+    }
+}
+
 /* void Headmaster::notify(const std::string &sender, const std::string &event)
 {
     if (sender == "Professor" && event == "CourseFinished")
@@ -171,9 +209,12 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
             {
                 signForm(type);
                 executeForm(type);
+                // dealocate form
+                delete type;
                 Course *course = new Course(target);
                 course->setMediator(this);
                 course->assignProfessor(professor);
+                professor->assignCourse(course);
                 addCourse(course);
             }
         }
@@ -183,19 +224,37 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
             Form *type = _secretary->createForm(FormType::CourseFinished);
             if (type)
             {
-                signForm(type);
-                executeForm(type);
                 // find the course that professor is responsible for
                 Course *course = professor->getCurrentCourse();
                 if (course)
                 {
-                    // unsuscribe student from course
-                    for (auto it = course->getStudents().begin(); it != course->getStudents().end(); it++)
+                    // find if target (student) is subscribed to the course
+                    Student *student = course->findStudent(target);
+                    if (student)
                     {
-                        (*it)->removeCourse(course->getCourseName());
-                        (*it)->graduate(course);
-                        course->unsubscribeStudent(*it);
+                        // cam he graduate?
+                        bool canGraduate = course->canGraduate(student);
+                        if (!canGraduate)
+                        {
+                            std::cout << "Student cannot graduate. Not enough classes attended." << std::endl;
+                            return;
+                        }
+                        signForm(type);
+                        executeForm(type);
+                        // dealocate form
+                        delete type;
+                        student->graduate(course);
+                        student->removeCourse(course->getCourseName());
+                        course->unsubscribeStudent(student);
                     }
+                    else
+                    {
+                        std::cout << "Student not found. Cannot graduate." << std::endl;
+                    }
+                }
+                else 
+                {
+                    std::cout << "Course not found. Cannot graduate students." << std::endl;
                 }
             }
         }
@@ -207,8 +266,10 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
             {
                 signForm(type);
                 executeForm(type);
-                Room *room = new Room();
-                room->setMediator(this);
+                // dealocate form
+                delete type;
+                // create classroom
+                Room *room = new Classroom();
                 addRoom(room);
                 std::cout << "Room created id: " << room->getId() << std::endl;
             }
@@ -218,24 +279,31 @@ void Headmaster::notify(Person &sender, const std::string &event, const std::str
     {
         if (event == "RequestCourseSubscription")
         {
-            (void) student;
             std::cout << "Headmaster: Notifying Secretary to create a subscription form.\n";
             Form *type = _secretary->createForm(FormType::SubscriptionToCourse);
             if (type)
             {
-                signForm(type);
-                executeForm(type);
                 Course *course = findCourse(target);
                 if (course)
                 {
+                    signForm(type);
+                    executeForm(type);
+                    // dealocate form
+                    delete type;
                     course->subscribeStudent(student);
                     student->setSubscribedCourse(course);
                     std::cout << "Student " << student->name() << " subscribed to course " << target << std::endl;
+                }
+                else
+                {
+                    std::cout << "Course not found. Cannot subscribe student." << std::endl;
                 }
             }
         }
     }
 }
+
+
 
 
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/HeadmasterOffice.hpp"
+#include "../includes/one.hpp"
 
 HeadmasterOffice::HeadmasterOffice() : Room()
 {

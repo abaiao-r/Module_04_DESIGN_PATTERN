@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   School.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 22:11:16 by abaiao-r          #+#    #+#             */
-/*   Updated: 2024/09/13 22:11:56 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:35:13 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ public:
     void runDayRoutine();
     void launchClasses();
     void requestRingBell();
-    void recruteProfessor(Professor* professor);
-    void recruteStudent(Student* student);
+    void recruteProfessor();
+    void recruteStudent();
     Course* getCourse(const std::string &courseName);
     std::vector<Student*> getStudents() const;
     std::vector<Professor*> getProfessors() const;

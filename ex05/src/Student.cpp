@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Student.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:49:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/13 21:00:49 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:59:49 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 Student::Student(const std::string &studentName) : Person(studentName), _subscribedCourse(), _mediator(nullptr)
 {
+    std::cout << "Student " << studentName << " created" << std::endl;
 }
 
 Student::~Student()

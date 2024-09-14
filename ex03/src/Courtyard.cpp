@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Courtyard.hpp"
+#include "../includes/one.hpp"
 
 Courtyard::Courtyard() : Room()
 {

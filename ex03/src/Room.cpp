@@ -6,11 +6,11 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:37:19 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 18:49:45 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:18:53 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Room.hpp"
+#include "../includes/one.hpp"
 
 long long Room::ID = 0;
 
@@ -40,6 +40,16 @@ bool Room::canEnter(const Person* person) const
         return false;
     }
 
+    // check if student is subscribed to the course
+    if (student)
+    {
+        // check if the student is subscribed to any course
+        if (student->getSubscribedCourse().empty())
+        {
+            return false;
+        }
+    }
+
     // if student and teacher from different course return false
     if (student && !this->_occupants.empty())
     {
@@ -49,7 +59,7 @@ bool Room::canEnter(const Person* person) const
             if (professorInRoom)
             {
                 // store the course of the professor
-                Course* course = this->_mediator->findCourse(professorInRoom->name());
+                Course* course = professorInRoom->getCurrentCourse();
                 // check if the student is subscribed to the course
                 if (!student->findCourse(course->getCourseName()))
                 {
@@ -69,7 +79,9 @@ void Room::enter(Person* person)
         return;
     }
     // Implement the enter method here
+    std::cout << "Person: " << person->name() << " enters room " << this->_id << std::endl;
     this->_occupants.push_back(person);
+    person->setRoom(this);
 }
 
 void Room::exit(Person* person)
@@ -111,3 +123,15 @@ std::vector<Person*> Room::getOccupants() const
     return this->_occupants;
 }
 
+bool Room::isOccupant(Person* person) const
+{
+    // Implement the isOccupant method here
+    for (auto it = this->_occupants.begin(); it != this->_occupants.end(); it++)
+    {
+        if (*it == person)
+        {
+            return true;
+        }
+    }
+    return false;
+}

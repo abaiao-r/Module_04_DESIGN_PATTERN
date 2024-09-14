@@ -6,11 +6,11 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:58:29 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 15:41:10 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:19:32 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Professor.hpp"
+#include "../includes/one.hpp"
 
 Professor::Professor(const std::string &staffName) : Staff(staffName), _currentCourse(nullptr), _mediator(nullptr)
 {
@@ -27,16 +27,76 @@ void Professor::assignCourse(Course* course)
 
 void Professor::doClass()
 {
-    // Implement the doClass method here
+    // if yes, check if professor is in any room
     if (this->_currentCourse)
     {
-       std::cout << "Professor gave class" << std::endl;
+        Room* currentRoom = room();
+        // print current room for debug
+        std::cout << "Current room: " << currentRoom << std::endl;
+        if (!currentRoom)
+        {
+            // look for a room to enter by checking if can enter any room
+            std::vector<Room*> rooms = this->_mediator->getRooms();
+            auto it = rooms.begin();
+            for (; it != rooms.end(); it++)
+            {
+                if ((*it)->canEnter(this))
+                {
+                    (*it)->enter(this);
+                    break;
+                }
+            }
+            if (it == rooms.end())
+            {
+                // if no room available then request more room
+                this->requestMoreClassRoom(this->_currentCourse->getCourseName());
+                // enter the room
+                this->doClass();
+            }       
+        }
+        // make subscibed students enter the room through the mediator
+        Classroom* classroom = dynamic_cast<Classroom*>(this->room());
+        if (classroom)
+        {
+            this->_mediator->makeStudentsEnterRoom(classroom);
+            // print the room occupants for debug
+            classroom->printOccupants();
+            std::cout << "Professor does class in room " << classroom->getId() << std::endl;
+            //set attendanceTimes for all the room occupants that are students
+            std::vector<Person*> occupants = classroom->getOccupants();
+            for (auto it = occupants.begin(); it != occupants.end(); it++)
+            {
+                Student* student = dynamic_cast<Student*>(*it);
+                if (student)
+                {
+                    this->_currentCourse->setAttendanceTimes(student);
+                    // if student can graduate then request graduation
+                    if (this->_currentCourse->canGraduate(student))
+                    {
+                        this->requestGraduation(student->name());
+                    }
+                }
+            }
+            // make everyone by loop through the occupants and make them exit the room
+            for (auto it = occupants.begin(); it != occupants.end(); it++)
+            {
+                classroom->exit(*it);
+                (*it)->setRoom(nullptr);
+                
+            }
+            std::cout << "----------------------------Finished class-----------------------------" << std::endl;
+        }
+        else
+        {
+            std::cout << "No classroom" << std::endl;
+        }
     }
     else
     {
         std::cout << "No course assigned" << std::endl;
+        // if no course assigned then request course creation
+        this->requestCourseCreation("someCourse");
     }
-    
 }
 
 void Professor::closeCourse()

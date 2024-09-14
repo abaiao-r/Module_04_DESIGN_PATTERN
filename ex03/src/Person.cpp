@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Person.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:05:05 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:13:33 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/12 17:33:16 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Person.hpp"
+#include "../includes/one.hpp"
 
 Person::Person(const std::string &personName) : _name(personName), _currentRoom(nullptr)
 {

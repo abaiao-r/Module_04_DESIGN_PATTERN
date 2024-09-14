@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   CourseFinishedForm.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:47:03 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/11 09:30:59 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/12 17:33:36 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/CourseFinishedForm.hpp"
+#include "../includes/one.hpp"
 
 CourseFinishedForm::CourseFinishedForm() : Form(FormType::CourseFinished)
 {

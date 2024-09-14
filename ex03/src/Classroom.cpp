@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Classroom.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:45:01 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/08 00:11:57 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/12 16:55:58 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Classroom.hpp"
+#include "../includes/one.hpp"
 
 Classroom::Classroom() : Room(), _currentRoom(nullptr)
 {

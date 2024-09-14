@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:33:59 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/13 21:11:41 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/14 16:29:25 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/one.hpp"
+#include "../includes/School.hpp"
 
 #include <iostream>
 #include <vector>
@@ -21,53 +22,46 @@
 
 int main(void) 
 {
-    Headmaster headmaster;
-    Secretary secretary("Secretary");
-    Professor professor("Professor");
-    Student student("Student");
-    
-    headmaster.setSecretary(&secretary);
-    headmaster.addProfessor(&professor);
-    headmaster.addStudent(&student);
+    School school;
 
-    professor.setMediator(&headmaster);
-    student.setMediator(&headmaster);
-    secretary.setMediator(&headmaster);
-
-    // register professor and student as bell observers
-    headmaster.addBellObserver(&professor);
-    headmaster.addBellObserver(&student);
-
-    std::cout << "-----------------------------------" << std::endl;
-
-    professor.requestCourseCreation("Math");
-    Course *course = headmaster.findCourse("Math");
-    Professor *responsibleProfessor = course->getResponsableProfessor();
-    std::string professorName = responsibleProfessor->name();
-    std::cout << "Professor name: " << professorName << std::endl;
-
-    std::cout << "-----------------------------------" << std::endl;
-
-    student.requestToSubscribeToCourse("Math");
+    school.recruteProfessor();
+    school.recruteProfessor();
+    school.recruteStudent();
+    school.recruteStudent();
     
 
-    std::cout << "-----------------------------------" << std::endl;
+    school.runDayRoutine();
 
-    // professor reuest room
-    professor.requestMoreClassRoom("Math");
-    // professor do class
-    professor.doClass();
-    std::cout << "-----------------------------------" << std::endl;
-    std::cout << "-----------------------------------" << std::endl;
-    headmaster.ringBell();
-    std::cout << "-----------------------------------" << std::endl;
-    std::cout << "-----------------------------------" << std::endl;
-    headmaster.ringBell();
-
-    //print the room of professor and student
-    std::cout << "Professor room: " << professor.room() << std::endl;
-    std::cout << "Student room: " << student.room() << std::endl;
+    school.recruteStudent();
+    school.graduationCeremony();
+    
+    std::cout << "--------------------------------" << std::endl;
+    //print  all courses
+    std::vector<Course*> courses = school.getHeadmaster().getCourses();
+    for (auto it = courses.begin(); it != courses.end(); it++)
+    {
+        std::cout << "Course: " << (*it)->getCourseName() << std::endl;
+    }
+      std::cout << "--------------------------------" << std::endl;
+    // print all students
+    std::vector<Student*> students = school.getStudents();
+    for (auto it = students.begin(); it != students.end(); it++)
+    {
+        std::cout << "Student: " << (*it)->name() << std::endl;
+    }
+  std::cout << "--------------------------------" << std::endl;
+    // print all professors
+    std::vector<Professor*> professors = school.getProfessors();
+    for (auto it = professors.begin(); it != professors.end(); it++)
+    {
+        std::cout << "Professor: " << (*it)->name() << std::endl;
+    }
+  std::cout << "--------------------------------" << std::endl;
+    //print the secretary
+    std::cout << "Secretary: " << school.getSecretary().name() << std::endl;
+    //print the headmaster
 
     return 0;
+
 }
 

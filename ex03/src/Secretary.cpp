@@ -6,12 +6,11 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:54:02 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/10 16:28:53 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:15:55 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Secretary.hpp"
-#include "../includes/Headmaster.hpp"
+#include "../includes/one.hpp"
 
 Secretary::Secretary(const std::string &staffName) : Staff(staffName), _mediator(nullptr)
 {

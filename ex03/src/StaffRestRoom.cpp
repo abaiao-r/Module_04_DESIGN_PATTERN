@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/StaffRestRoom.hpp"
+#include "../includes/one.hpp"
 
 StaffRestRoom::StaffRestRoom() : Room()
 {
