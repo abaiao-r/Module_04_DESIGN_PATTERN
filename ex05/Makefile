@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+         #
+#    By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 15:48:30 by andrefranci       #+#    #+#              #
-#    Updated: 2024/09/14 15:41:39 by andrefranci      ###   ########.fr        #
+#    Updated: 2024/09/25 17:37:11 by abaiao-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler settings
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++11 -g -fsanitize=address #-fstandalone-debug -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++11 -g #-fsanitize=address #-fstandalone-debug -fsanitize=address
 
 # Directories
 SRCDIR = src

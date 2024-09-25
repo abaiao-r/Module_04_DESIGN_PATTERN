@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   NeedCourseCreationForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:39:49 by andrefranci       #+#    #+#             */
-/*   Updated: 2024/09/03 15:40:01 by andrefranci      ###   ########.fr       */
+/*   Updated: 2024/09/25 17:21:05 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,9 @@ NeedCourseCreationForm &NeedCourseCreationForm::operator=(const NeedCourseCreati
 
 NeedCourseCreationForm::~NeedCourseCreationForm()
 {
+}
+
+void NeedCourseCreationForm::execute()
+{
+    
 }
